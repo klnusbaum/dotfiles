@@ -13,11 +13,7 @@ land () {
     echo "Landing and rebasing"
     arc land 
   else
-    arc land --keep-branch $1
-    git checkout master
-    git merge 
-    git checkout -
-    git rebase master
+    arc land --keep-branch $1 && git checkout master && git merge && git checkout - && git rebase master
   fi  
 }
 
