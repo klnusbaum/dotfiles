@@ -9,7 +9,7 @@ alias atext="adb shell input text"
 alias ado="arc diff --only"
 alias ad="arc diff HEAD^"
 alias pd="pushd"
-alias ppd="popd"
+alias vim="nvim"
 
 land () { 
   if [ "$#" -eq 0 ]; then
