@@ -1,0 +1,32 @@
+" plugins {{{
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'tpope/vim-sensible'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'vim-syntastic/syntastic'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+call plug#end()
+" }}}
+
+" netrw {{{
+let g:netrw_liststyle = 3
+let g:netrw_banner = 1
+" }}}
+
+" Misc Options {{{
+set mouse=a
+set tabstop=4
+set ruler
+syntax on
+set smartindent
+nnoremap <leader>prev :bprevious<cr>
+" }}}
+
+" vimscript editing convenience {{{
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+inoremap <leader>ev <esc>:vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+" }}}
+
