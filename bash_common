@@ -20,3 +20,6 @@ land () {
   fi  
 }
 
+encodeUUID() {
+  echo "$1" | xxd -r -p | base64
+}
