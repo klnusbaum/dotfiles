@@ -7,6 +7,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'artur-shaik/vim-javacomplete2'
 call plug#end()
 " }}}
 

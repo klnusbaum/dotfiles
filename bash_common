@@ -1,5 +1,6 @@
 export CLICOLOR=1
 export EDITOR=vim
+export GOPATH=$HOME/sandbox/gocode
 alias l="ls -l"
 alias whatsnew="git diff HEAD^ --name-only"
 alias logcat="adb logcat -v time"
@@ -22,4 +23,8 @@ land () {
 
 encodeUUID() {
   echo "$1" | xxd -r -p | base64
+}
+
+tcopy () {
+		tmux showb | pbcopy
 }
