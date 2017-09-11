@@ -16,6 +16,8 @@ macinstall() {
    brew install reattach-to-user-namespace
    echo "Installing neovim"
    brew install neovim
+   echo "Installing tmux"
+   brew install tmux
 }
 
 
