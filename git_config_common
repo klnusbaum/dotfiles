@@ -17,3 +17,6 @@
 	ui = always
 [push]
 	default = simple
+[user]
+    name = Kurtis Nusbaum
+    email = default@kurtis.com
