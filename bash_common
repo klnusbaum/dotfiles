@@ -26,5 +26,5 @@ encodeUUID() {
 }
 
 tcopy () {
-		tmux showb | pbcopy
+  tmux showb | pbcopy
 }
