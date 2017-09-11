@@ -14,8 +14,8 @@ macinstall() {
    ensurebrew
    echo "Installing reattach-user-namespace"
    brew install reattach-to-user-namespace
-   echo "Installing nvim"
-   brew install nvim
+   echo "Installing neovim"
+   brew install neovim
 }
 
 
@@ -25,7 +25,7 @@ then
   macinstall
 fi
 
-FILES_DIR=$(dirname "${BASH_SOURCE[0]}")
+FILES_DIR=$(pwd $(dirname "${BASH_SOURCE[0]}"))
 
 echo "Including common git config"
 git_conf_path="$FILES_DIR/git_config_common"
