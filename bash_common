@@ -28,3 +28,7 @@ encodeUUID() {
 tcopy () {
   tmux showb | pbcopy
 }
+
+gt () {
+		go test -v -race -run $1
+}

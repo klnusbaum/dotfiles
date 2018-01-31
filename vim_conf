@@ -23,6 +23,8 @@ set tabstop=4
 set ruler
 syntax on
 set smartindent
+" line numbers
+set nu
 " }}}
 
 " vimscript editing convenience {{{
