@@ -9,6 +9,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'solarnz/thrift.vim'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 " }}}
 
@@ -31,4 +32,11 @@ set nu
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 inoremap <leader>ev <esc>:vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+" }}}
+
+
+" Rust Options {{{
+let g:rustfmt_autosave = 1
+let g:rustfmt_command = 'rustfmt +nightly'
+let g:syntastic_rust_checkers = ['rustc']
 " }}}
