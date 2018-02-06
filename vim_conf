@@ -10,6 +10,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'solarnz/thrift.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
 call plug#end()
 " }}}
 
@@ -26,6 +27,8 @@ syntax on
 set smartindent
 " line numbers
 set nu
+" hide buffers when going to a new buffer, don't close them
+set hidden
 " }}}
 
 " vimscript editing convenience {{{
@@ -39,4 +42,5 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 let g:rustfmt_autosave = 1
 let g:rustfmt_command = 'rustfmt +nightly'
 let g:syntastic_rust_checkers = ['rustc']
+let g:racer_cmd = 'racer'
 " }}}
