@@ -43,4 +43,9 @@ let g:rustfmt_autosave = 1
 let g:rustfmt_command = 'rustfmt +nightly'
 let g:syntastic_rust_checkers = ['rustc']
 let g:racer_cmd = 'racer'
+
+au FileType rust nmap <leader>gd <Plug>(rust-def)
+au FileType rust nmap <leader>gs <Plug>(rust-def-split)
+au FileType rust nmap <leader>gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>go <Plug>(rust-doc)
 " }}}
