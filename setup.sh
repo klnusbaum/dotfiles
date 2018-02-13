@@ -11,6 +11,8 @@ ensurebrew () {
 
 
 macinstall() {
+   echo "installing rust (remember, you already have the path for rust exectuables in your bash profile)"
+   curl https://sh.rustup.rs -sSf | sh
    ensurebrew
    echo "Installing reattach-user-namespace"
    brew install reattach-to-user-namespace
