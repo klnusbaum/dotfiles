@@ -20,6 +20,7 @@
 .glide/
 .gradle/
 .local/
+.m2/
 .multirust
 .node-gyp/
 .npm/
