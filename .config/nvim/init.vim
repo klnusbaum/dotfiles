@@ -40,7 +40,6 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 
 " Rust Options {{{
 let g:rustfmt_autosave = 1
-let g:rustfmt_command = 'rustfmt +nightly'
 let g:syntastic_rust_checkers = ['rustc']
 let g:racer_cmd = 'racer'
 
