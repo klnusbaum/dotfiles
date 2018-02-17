@@ -1,5 +1,3 @@
-source ~/.git-completion.bash
-
 export CLICOLOR=1
 export EDITOR=vim
 export GOPATH=$HOME/sandbox/gocode
