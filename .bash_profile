@@ -16,8 +16,10 @@ land () {
   if [ "$#" -eq 0 ]; then
     echo "Landing and rebasing"
     arc land 
-  else
-    arc land --keep-branch $1 && git checkout master && git merge && git checkout - && git rebase master
+  elif [ "$1" == "land" ] && [ "$#" -eq 1 ]; then
+    arc land --keep-branch "$1" && git checkout master && git merge && git checkout - && git rebase master
+  elif [ "$1" == "land" ] && [ "$2" == "-nr" ]; then
+    arc land --key-branch "$1"
   fi  
 }
 
@@ -30,8 +32,9 @@ tcopy () {
 }
 
 gt () {
-		go test -v -race -run $1
+		go test -v -race -run "$1"
 }
 
+rust_src_lib=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 export PATH="$HOME/.cargo/bin:$PATH"
-export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+export RUST_SRC_PATH=$rust_src_lib
