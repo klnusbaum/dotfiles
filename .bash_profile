@@ -14,12 +14,14 @@ alias vim="nvim"
 
 land () { 
   if [ "$#" -eq 0 ]; then
-    echo "Landing and rebasing"
     arc land 
-  elif [ "$1" == "land" ] && [ "$#" -eq 1 ]; then
+  elif [ $# -eq 1 ]; then
+    echo "Landing and rebasing"
     arc land --keep-branch "$1" && git checkout master && git merge && git checkout - && git rebase master
-  elif [ "$1" == "land" ] && [ "$2" == "-nr" ]; then
-    arc land --key-branch "$1"
+  elif [ "$1" == "-nr" ]; then
+    arc land --key-branch "$2"
+  else
+    echo "Argument error"
   fi  
 }
 

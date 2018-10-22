@@ -64,3 +64,7 @@ au FileType rust nmap <leader>go <Plug>(rust-doc)
 " airline settings {{{
 let g:airline_theme='simple'
 " }}}
+
+" Wildignore stuff {{{
+set wildignore+=*/buck-out/*
+" }}}
