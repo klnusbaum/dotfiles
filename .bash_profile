@@ -19,7 +19,7 @@ land () {
     echo "Landing and rebasing"
     arc land --keep-branch "$1" && git checkout master && git merge && git checkout - && git rebase master
   elif [ "$1" == "-nr" ]; then
-    arc land --key-branch "$2"
+    arc land --keep-branch "$2"
   else
     echo "Argument error"
   fi  
