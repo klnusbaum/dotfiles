@@ -48,3 +48,4 @@ sandbox/
 home-int/
 VirtualBox VMs/
 logs/
+.virtualenvs/
