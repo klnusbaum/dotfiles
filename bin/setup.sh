@@ -18,10 +18,11 @@ macinstall() {
    brew install neovim
    echo "Installing tmux"
    brew install tmux
+   echo "Installing tree"
+   brew install tree
+   echo "Installing wget"
+   brew install wget
 }
-
-echo "installing rust (remember, you already have the path for rust exectuables in your bash profile)"
-curl https://sh.rustup.rs -sSf | sh
 
 if [ "$(uname)" = "Darwin" ]
 then
