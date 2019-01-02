@@ -1,4 +1,5 @@
 .CFUserTextEncoding
+bin/vault
 .DS_Store
 .Xauthority
 .bash_history
