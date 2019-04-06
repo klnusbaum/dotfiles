@@ -1,8 +1,9 @@
 .CFUserTextEncoding
-bin/vault
 .DS_Store
 .Xauthority
 .bash_history
+.profile
+.sqlite_history
 .bash_sessions/
 .bundle/
 .cache/
@@ -20,6 +21,7 @@ bin/vault
 .ghc/
 .glide/
 .gradle/
+.jenv/
 .local/
 .m2/
 .multirust
@@ -33,6 +35,7 @@ bin/vault
 .stack/
 .subversion/
 .viminfo
+.virtualenvs/
 .vscode/
 .wget-hsts
 Applications/
@@ -45,8 +48,8 @@ Movies/
 Music/
 Pictures/
 Public/
-sandbox/
-home-int/
 VirtualBox VMs/
+bin/vault
+home-int/
 logs/
-.virtualenvs/
+sandbox/

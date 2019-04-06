@@ -40,3 +40,7 @@ gt () {
 rust_src_lib=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_SRC_PATH=$rust_src_lib
+
+clearbak() {
+		find . -name "*bak" -exec rm {} \;
+}
