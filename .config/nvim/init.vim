@@ -10,9 +10,9 @@ Plug 'tpope/vim-fugitive'
 Plug 'artur-shaik/vim-javacomplete2'
 Plug 'solarnz/thrift.vim'
 Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'majutsushi/tagbar'
 call plug#end()
 " }}}
 
@@ -34,8 +34,8 @@ set hidden
 " }}}
 
 " vimscript editing convenience {{{
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-inoremap <leader>ev <esc>:vsplit $MYVIMRC<cr>
+nnoremap <leader>ev :split $MYVIMRC<cr>
+inoremap <leader>ev <esc>:split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " }}}
 
@@ -51,9 +51,7 @@ let g:syntastic_check_on_wq = 0
 " }}}
 
 " Rust Options {{{
-let g:rustfmt_autosave = 0
-" let g:syntastic_rust_checkers = ['cargo']
-let g:racer_cmd = 'racer'
+let g:rustfmt_autosave = 1
 
 au FileType rust nmap <leader>gd <Plug>(rust-def)
 au FileType rust nmap <leader>gs <Plug>(rust-def-split)
@@ -62,9 +60,10 @@ au FileType rust nmap <leader>go <Plug>(rust-doc)
 " }}}
 
 " airline settings {{{
-let g:airline_theme='simple'
+let g:airline_theme='deus'
 " }}}
 
 " Wildignore stuff {{{
 set wildignore+=*/buck-out/*
+set wildignore+=*/target/*
 " }}}
