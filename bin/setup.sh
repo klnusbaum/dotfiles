@@ -24,6 +24,17 @@ macinstall() {
    brew install wget
 }
 
+powerline_fonts() {
+    echo "Installing powerline fonts"
+    git clone https://github.com/powerline/fonts.git --depth=1
+    pushd fonts || exit
+    ./install.sh
+    popd || exit
+    rm -rf fonts
+}
+
+
+
 if [ "$(uname)" = "Darwin" ]
 then
   echo "Darwin detected. Installing necessary software"
@@ -32,3 +43,5 @@ fi
 
 echo "Installing Plug for vim"
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+powerline_fonts

@@ -12,7 +12,6 @@ Plug 'solarnz/thrift.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'majutsushi/tagbar'
 call plug#end()
 " }}}
 
@@ -61,6 +60,7 @@ au FileType rust nmap <leader>go <Plug>(rust-doc)
 
 " airline settings {{{
 let g:airline_theme='deus'
+let g:airline_powerline_fonts = 1
 " }}}
 
 " Wildignore stuff {{{
