@@ -1,17 +1,18 @@
 " plugins {{{
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'tpope/vim-sensible'
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'vim-syntastic/syntastic'
+Plug 'fatih/vim-go'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
-Plug 'artur-shaik/vim-javacomplete2'
-Plug 'solarnz/thrift.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'autozimu/LanguageClient-neovim', {
+  \ 'branch': 'next',
+  \ 'do': 'bash install.sh',
+  \ } 
 call plug#end()
 " }}}
 
@@ -38,24 +39,23 @@ inoremap <leader>ev <esc>:split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 " }}}
 
-" Syntastic settings {{{
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
+" {{{
+let g:LanguageClient_serverCommands = {
+  \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+  \ 'go': ['gopls'] }
+autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
+" The call to GoImports shouldn't be necessary, but the above call to
+" textDocument_formatting_sync doesn't seem to be adding the imports like it
+" should
+autocmd BufWritePre *.go :GoImports
+" }}}
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+" Vim Go {{{
+let g:go_def_mode='gopls'
 " }}}
 
 " Rust Options {{{
 let g:rustfmt_autosave = 1
-
-au FileType rust nmap <leader>gd <Plug>(rust-def)
-au FileType rust nmap <leader>gs <Plug>(rust-def-split)
-au FileType rust nmap <leader>gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>go <Plug>(rust-doc)
 " }}}
 
 " airline settings {{{

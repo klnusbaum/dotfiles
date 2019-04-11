@@ -26,6 +26,8 @@ macinstall() {
 
 powerline_fonts() {
     echo "Installing powerline fonts"
+    echo "Remember to set your terminal font size to an odd number"
+    echo "Preferred Font is \"Literation Mono\""
     git clone https://github.com/powerline/fonts.git --depth=1
     pushd fonts || exit
     ./install.sh
