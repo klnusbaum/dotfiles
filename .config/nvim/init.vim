@@ -9,6 +9,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'autozimu/LanguageClient-neovim', {
   \ 'branch': 'next',
   \ 'do': 'bash install.sh',
@@ -43,24 +44,27 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 let g:LanguageClient_serverCommands = {
   \ 'rust': ['rustup', 'run', 'stable', 'rls'],
   \ 'go': ['gopls'] }
-autocmd BufWritePre *.go :call LanguageClient#textDocument_formatting_sync()
-" The call to GoImports shouldn't be necessary, but the above call to
-" textDocument_formatting_sync doesn't seem to be adding the imports like it
-" should
-autocmd BufWritePre *.go :GoImports
+autocmd BufWritePre *.go,*.rs :call LanguageClient#textDocument_formatting_sync()
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 " }}}
 
 " Vim Go {{{
 let g:go_def_mode='gopls'
 " }}}
 
-" Rust Options {{{
-let g:rustfmt_autosave = 1
-" }}}
-
 " airline settings {{{
 let g:airline_theme='deus'
 let g:airline_powerline_fonts = 1
+" }}}
+
+" ctrlp settings {{{
+let g:ctrlp_max_files=20000
+" }}}
+
+" deoplete {{{
+let g:deoplete#enable_at_startup = 1
 " }}}
 
 " Wildignore stuff {{{

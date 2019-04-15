@@ -22,6 +22,8 @@ macinstall() {
    brew install tree
    echo "Installing wget"
    brew install wget
+   echo "installing pynvim"
+   pip3 install --user --upgrade pynvim
 }
 
 powerline_fonts() {
