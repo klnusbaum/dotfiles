@@ -67,6 +67,12 @@ let g:ctrlp_max_files=20000
 let g:deoplete#enable_at_startup = 1
 " }}}
 
+" ctrlp {{{
+let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+" ripgrep is fase enough that you can turn off caching.
+let g:ctrlp_use_caching = 0
+" }}}
+
 " Wildignore stuff {{{
 set wildignore+=*/buck-out/*
 set wildignore+=*/target/*

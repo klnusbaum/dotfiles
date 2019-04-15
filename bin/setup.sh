@@ -24,6 +24,8 @@ macinstall() {
    brew install wget
    echo "installing pynvim"
    pip3 install --user --upgrade pynvim
+   echo "installing ripgrep"
+   brew install ripgrep
 }
 
 powerline_fonts() {
