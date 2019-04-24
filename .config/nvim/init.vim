@@ -60,7 +60,7 @@ let g:airline_powerline_fonts = 1
 " }}}
 
 " ctrlp settings {{{
-let g:ctrlp_max_files=20000
+let g:ctrlp_max_files=25000
 " }}}
 
 " deoplete {{{
