@@ -30,8 +30,6 @@ syntax on
 set smartindent
 " line numbers
 set nu
-" hide buffers when going to a new buffer, don't close them
-set hidden
 " }}}
 
 " vimscript editing convenience {{{
