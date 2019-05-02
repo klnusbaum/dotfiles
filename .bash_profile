@@ -37,6 +37,10 @@ gt () {
 		go test -v -race -run "$1"
 }
 
+bt () {
+   bazel test ...
+}
+
 rust_src_lib=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 export PATH="$HOME/.cargo/bin:$PATH"
 export RUST_SRC_PATH=$rust_src_lib
