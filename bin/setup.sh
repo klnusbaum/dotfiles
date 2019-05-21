@@ -42,6 +42,8 @@ debinstall() {
 
     echo "Installing pynvim (for neovim)"
     pip3 install --user --upgrade pynvim
+
+    echo "Finished. Remember to start VIM and run PlugUpdate"
 }
 
 powerline_fonts() {
