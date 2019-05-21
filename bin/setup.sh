@@ -31,7 +31,6 @@ macinstall() {
 debinstall() {
     echo "Installing Rust"
     curl -sf -L https://static.rust-lang.org/rustup.sh | sh
-    cargo install ripgrep
     rustup component add rls rust-analysis rust-src
 
     echo "Updating package list"
@@ -41,12 +40,12 @@ debinstall() {
     sudo apt upgrade
 
     echo "Installing extra packages"
-    sudo apt install tree neovim tmux python3-pip
+    sudo apt install tree neovim tmux python3-pip ripgrep
 
     echo "Installing pynvim (for neovim)"
     pip3 install --user --upgrade pynvim
 
-    echo "Finished. Remember to start VIM and run PlugUpdate"
+    vim +PlugInstall +qall > /dev/null
 }
 
 powerline_fonts() {
