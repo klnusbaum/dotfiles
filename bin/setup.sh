@@ -28,6 +28,10 @@ macinstall() {
    brew install ripgrep
 }
 
+debinstall() {
+    sudo apt-get install tree neovim tmux ripgrep
+}
+
 powerline_fonts() {
     echo "Installing powerline fonts"
     echo "Remember to set your terminal font size to an odd number"
@@ -45,6 +49,10 @@ if [ "$(uname)" = "Darwin" ]
 then
   echo "Darwin detected. Installing necessary software"
   macinstall
+elif [ "$(uname)" = "Linux" ]
+then
+  echo "Linux detected. Assuming Ubuntu/Debian"
+  debinstall 
 fi
 
 echo "Installing Plug for vim"
