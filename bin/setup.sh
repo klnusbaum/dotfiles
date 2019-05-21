@@ -29,7 +29,19 @@ macinstall() {
 }
 
 debinstall() {
-    sudo apt-get install tree neovim tmux ripgrep
+    echo "Installing Rust"
+    curl -sf -L https://static.rust-lang.org/rustup.sh | sh
+    cargo install ripgrep
+    rustup component add rls rust-analysis rust-src
+
+    echo "Updating package list"
+    sudo apt update
+
+    echo "Installing extra packages"
+    sudo apt install tree neovim tmux python3-pip
+
+    echo "Installing pynvim (for neovim)"
+    pip3 install --user --upgrade pynvim
 }
 
 powerline_fonts() {
