@@ -37,6 +37,9 @@ debinstall() {
     echo "Updating package list"
     sudo apt update
 
+    echo "Upgrading packages"
+    sudo apt upgrade
+
     echo "Installing extra packages"
     sudo apt install tree neovim tmux python3-pip
 
