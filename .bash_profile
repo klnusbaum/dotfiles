@@ -29,24 +29,20 @@ encodeUUID() {
   echo "$1" | xxd -r -p | base64
 }
 
-tcopy () {
-  tmux showb | pbcopy
-}
-
 gt () {
-		go test -v -race -run "$1"
+  go test -v -race -run "$1"
 }
 
 bt () {
-   bazel test ...
+  bazel test ...
 }
 
-rust_src_lib=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 export PATH="$HOME/.cargo/bin:$PATH"
+rust_src_lib=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 export RUST_SRC_PATH=$rust_src_lib
 
 clearbak() {
-		find . -name "*bak" -exec rm {} \;
+  find . -name "*bak" -exec rm {} \;
 }
 
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
