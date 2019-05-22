@@ -1,6 +1,6 @@
 [user]
-	name = Kurtis Nusbaum
-	email = kcommiter@gmail.com
+    name = Kurtis Nusbaum
+    email = kcommiter@gmail.com
 [alias]
     pull = pull --tags
     st = status
@@ -14,8 +14,8 @@
     cpick = cherry-pick
     lg = log --graph --decorate --abbrev-commit --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --branches --remotes
 [color]
-	ui = always
+    ui = always
 [push]
-	default = simple
+    default = simple
 [rerere]
-	enabled = true
+    enabled = true
