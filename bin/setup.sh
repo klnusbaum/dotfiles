@@ -22,6 +22,8 @@ macinstall() {
    brew install tree
    echo "Installing wget"
    brew install wget
+   echo "Installing python3"
+   brew install python3
    echo "installing pynvim"
    pip3 install --user --upgrade pynvim
    echo "installing ripgrep"
@@ -45,7 +47,6 @@ debinstall() {
     echo "Installing pynvim (for neovim)"
     pip3 install --user --upgrade pynvim
 
-    vim +PlugInstall +qall > /dev/null
 }
 
 powerline_fonts() {
@@ -73,5 +74,6 @@ fi
 
 echo "Installing Plug for vim"
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+vim +PlugInstall +qall > /dev/null
 
 powerline_fonts
