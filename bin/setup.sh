@@ -31,10 +31,6 @@ macinstall() {
 }
 
 debinstall() {
-    echo "Installing Rust"
-    curl -sf -L https://static.rust-lang.org/rustup.sh | sh
-    rustup component add rls rust-analysis rust-src
-
     echo "Updating package list"
     sudo apt update
 
@@ -71,6 +67,11 @@ then
   echo "Linux detected. Assuming Ubuntu/Debian"
   debinstall 
 fi
+
+echo "Installing Rust"
+curl -sf -L https://static.rust-lang.org/rustup.sh | sh
+rustup component add rls rust-analysis rust-src
+
 
 echo "Installing Plug for vim"
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
