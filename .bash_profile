@@ -48,3 +48,7 @@ export RUST_SRC_PATH=$rust_src_lib
 clearbak() {
 		find . -name "*bak" -exec rm {} \;
 }
+
+if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+  . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+fi
