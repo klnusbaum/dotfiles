@@ -24,7 +24,9 @@ let g:netrw_banner = 1
 
 " Misc Options {{{
 set mouse=a
-set tabstop=4
+set tabstop=2
+set shiftwidth=2
+set expandtab
 set ruler
 syntax on
 set smartindent
