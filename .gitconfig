@@ -2,7 +2,7 @@
 	name = Kurtis Nusbaum
 	email = kcommiter@gmail.com
 [alias]
-	pull = pull --tags
+    pull = pull --tags
     st = status
 	rim = rebase -i master
     rem = rebase master
