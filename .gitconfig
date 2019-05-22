@@ -4,16 +4,15 @@
 [alias]
     pull = pull --tags
     st = status
-	rim = rebase -i master
+    rim = rebase -i master
     rem = rebase master
-	co = checkout
-	cm = commit
-	ca = commit --amend
-	br = branch
-	rc = rebase --continue
+    co = checkout
+    cm = commit
+    ca = commit --amend
+    br = branch
+    rc = rebase --continue
     cpick = cherry-pick
-	lg = log --graph --decorate --abbrev-commit --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --branches --remotes
-	excludesfile = /Users/kurtis/.gitignore_global
+    lg = log --graph --decorate --abbrev-commit --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --branches --remotes
 [color]
 	ui = always
 [push]
