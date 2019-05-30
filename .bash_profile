@@ -37,6 +37,10 @@ bt () {
   bazel test ...
 }
 
+mahlog () {
+  git log --author=$(git config user.email)
+}
+
 export PATH="$HOME/.cargo/bin:$PATH"
 rust_src_lib=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 export RUST_SRC_PATH=$rust_src_lib
