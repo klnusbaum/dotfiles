@@ -8,7 +8,7 @@
     rem = rebase master
     co = checkout
     cm = commit
-    ca = commit --amend
+    ca = commit --amend --no-edit
     br = branch
     rc = rebase --continue
     cpick = cherry-pick

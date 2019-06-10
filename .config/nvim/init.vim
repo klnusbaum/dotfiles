@@ -38,6 +38,11 @@ set nu
 nnoremap <leader>ev :split $MYVIMRC<cr>
 inoremap <leader>ev <esc>:split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+nnoremap <leader>ss :set spell<cr>
+inoremap <leader>ss <esc>:set spell<cr>
+nnoremap <leader>ns :set nospell<cr>
+inoremap <leader>ns <esc>:set nospell<cr>
 " }}}
 
 " {{{
