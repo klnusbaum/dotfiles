@@ -8,6 +8,7 @@ alias ss="adb shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > ~/Desktop/scre
 alias pklist="adb shell pm list packages -f"
 alias atext="adb shell input text"
 alias ado="arc diff --only"
+alias adm="arc diff -m"
 alias ad="arc diff HEAD^"
 alias pd="pushd"
 alias vim="nvim"
