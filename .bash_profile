@@ -50,10 +50,10 @@ clearbak() {
   find . -name "*bak" -exec rm {} \;
 }
 
-if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+if [ "$(uname)" = "Darwin" ] && [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
   . `brew --prefix`/etc/bash_completion.d/git-completion.bash
 fi
 
-if [ -f `brew --prefix`/etc/bash_completion.d/bazel-complete.bash ]; then
+if [ "$(uname)" = "Darwin" ] && [ -f `brew --prefix`/etc/bash_completion.d/bazel-complete.bash ]; then
   . `brew --prefix`/etc/bash_completion.d/bazel-complete.bash
 fi
