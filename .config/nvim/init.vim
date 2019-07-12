@@ -65,10 +65,6 @@ let g:airline_theme='deus'
 let g:airline_powerline_fonts = 1
 " }}}
 
-" ctrlp settings {{{
-let g:ctrlp_max_files=25000
-" }}}
-
 " deoplete {{{
 let g:deoplete#enable_at_startup = 1
 " }}}
