@@ -38,6 +38,10 @@ bt () {
   bazel test ...
 }
 
+bb () {
+  bazel build ...
+}
+
 mahlog () {
   git log --author=$(git config user.email)
 }
