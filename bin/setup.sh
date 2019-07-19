@@ -28,6 +28,8 @@ macinstall() {
    pip3 install --user --upgrade pynvim
    echo "installing ripgrep"
    brew install ripgrep
+   echo "installing imagemagick"
+   brew install imagemagick
 }
 
 debinstall() {
