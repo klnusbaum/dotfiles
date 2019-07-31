@@ -27,6 +27,8 @@
 .lpass
 .m2/
 .multirust
+.netrc
+.netrc_info
 .node-gyp/
 .npm/
 .nvm/
