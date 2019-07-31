@@ -35,7 +35,7 @@ gt () {
 }
 
 bt () {
-  bazel test ...
+  bazel test --test_arg=-test.v --test_output=all ...
 }
 
 bb () {
