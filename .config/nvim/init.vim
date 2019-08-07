@@ -42,6 +42,11 @@ inoremap <leader>ns <esc>:set nospell<cr>
 
 " vim-go {{{
 let g:go_fmt_command = "goimports"
+let g:go_def_mode = 'guru'
+" }}}
+
+" deoplete {{{
+let g:deoplete#enable_at_startup = 1
 " }}}
 
 " airline settings {{{
