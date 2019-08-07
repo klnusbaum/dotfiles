@@ -13,6 +13,11 @@ alias ad="arc diff HEAD^"
 alias pd="pushd"
 alias vim="nvim"
 
+webgodocs () {
+  godoc -http=localhost:6060
+}
+
+
 land () { 
   if [ "$#" -eq 0 ]; then
     arc land 
@@ -35,6 +40,10 @@ gt () {
 }
 
 bt () {
+  bazel test ...
+}
+
+btv () {
   bazel test --test_arg=-test.v --test_output=all ...
 }
 
@@ -51,7 +60,7 @@ rust_src_lib=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 export RUST_SRC_PATH=$rust_src_lib
 
 clearbak() {
-  find . -name "*bak" -exec rm {} \;
+  find . -name "*.bak" -delete
 }
 
 if [ "$(uname)" = "Darwin" ] && [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
