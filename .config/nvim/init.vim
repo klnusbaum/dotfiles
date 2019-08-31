@@ -33,7 +33,10 @@ set nu
 nnoremap <leader>ev :split $MYVIMRC<cr>
 inoremap <leader>ev <esc>:split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+" }}}
 
+
+" fun short cuts {{{
 nnoremap <leader>ss :set spell<cr>
 inoremap <leader>ss <esc>:set spell<cr>
 nnoremap <leader>ns :set nospell<cr>
@@ -42,7 +45,7 @@ inoremap <leader>ns <esc>:set nospell<cr>
 
 " vim-go {{{
 let g:go_fmt_command = "goimports"
-let g:go_def_mode = 'guru'
+nnoremap <leader>ts :GoTest<cr>
 " }}}
 
 " deoplete {{{
