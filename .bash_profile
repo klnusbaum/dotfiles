@@ -7,9 +7,8 @@ alias logcat="adb logcat -v time"
 alias ss="adb shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > ~/Desktop/screen.png"
 alias pklist="adb shell pm list packages -f"
 alias atext="adb shell input text"
-alias ado="arc diff --only"
-alias adm="arc diff -m"
 alias ad="arc diff HEAD^"
+alias ado="ad --only"
 alias pd="pushd"
 alias vim="nvim"
 
@@ -29,6 +28,15 @@ land () {
   else
     echo "Argument error"
   fi  
+}
+
+headhash() {
+  git rev-parse HEAD | pbcopy
+}
+
+doreplace() {
+  git grep -l "$1" | xargs sed -i .bak "s/$tofind/$replace/g"
+  clearbak
 }
 
 encodeUUID() {
