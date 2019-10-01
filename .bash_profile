@@ -1,6 +1,7 @@
 export CLICOLOR=1
 export EDITOR=vim
 export GOPATH=$HOME/sandbox/go-code
+export HISTSIZE=10000
 alias l="ls -l"
 alias whatsnew="git diff HEAD^ --name-only"
 alias logcat="adb logcat -v time"
