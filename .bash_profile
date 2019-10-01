@@ -43,6 +43,10 @@ uuid()
     echo
 }
 
+scaleimg() {
+  convert "$1" -resize "$2" "$2_$1"
+}
+
 webgodocs () {
   godoc -http=localhost:6060
 }
