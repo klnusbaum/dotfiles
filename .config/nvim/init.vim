@@ -10,6 +10,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'rust-lang/rust.vim'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'scrooloose/nerdtree'
 call plug#end()
 " }}}
 
@@ -67,6 +68,10 @@ let g:airline_powerline_fonts = 1
 let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 " ripgrep is fase enough that you can turn off caching.
 let g:ctrlp_use_caching = 1
+" }}}
+
+" nerdtree {{{
+nmap <F6> :NERDTreeToggle<CR>
 " }}}
 
 " Wildignore stuff {{{
