@@ -8,8 +8,6 @@ alias logcat="adb logcat -v time"
 alias ss="adb shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > ~/Desktop/screen.png"
 alias pklist="adb shell pm list packages -f"
 alias atext="adb shell input text"
-alias ad="arc diff HEAD^"
-alias ado="ad --only"
 alias pd="pushd"
 alias vim="nvim"
 
