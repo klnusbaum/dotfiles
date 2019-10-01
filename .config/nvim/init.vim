@@ -8,6 +8,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-airline/vim-airline'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'rust-lang/rust.vim'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 " }}}
@@ -45,7 +46,12 @@ inoremap <leader>ns <esc>:set nospell<cr>
 
 " vim-go {{{
 let g:go_fmt_command = "goimports"
-nnoremap <leader>ts :GoTest<cr>
+autocmd FileType go nnoremap <leader>ts :GoTest<cr>
+" }}}
+
+" rust vim {{{
+let g:rustfmt_autosave = 1 
+autocmd FileType rust nnoremap <leader>ts :RustTest<cr>
 " }}}
 
 " deoplete {{{
