@@ -70,7 +70,9 @@ headhash() {
 }
 
 doreplace() {
-  git grep -l "$1" | xargs sed -i .bak "s/$tofind/$replace/g"
+  FIND=$1
+  REPLACE=$2
+  git grep -l "$FIND" | xargs sed -i .bak "s/$FIND/$REPLACE/g"
   clearbak
 }
 
