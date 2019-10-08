@@ -65,8 +65,8 @@ land () {
   fi  
 }
 
-headhash() {
-  git rev-parse HEAD | pbcopy
+grp() {
+  git rev-parse "$1" | pbcopy
 }
 
 doreplace() {
