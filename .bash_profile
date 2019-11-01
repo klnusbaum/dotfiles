@@ -11,6 +11,14 @@ alias atext="adb shell input text"
 alias pd="pushd"
 alias vim="nvim"
 
+top10commiters() {
+  top_committers 10
+}
+
+top_committers() {
+  git shortlog -s --first-parent | uniq | sort -r | head -n "$1"
+}
+
 uuid()
 {
     local N B T
