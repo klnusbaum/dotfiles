@@ -18,6 +18,7 @@
 .dlv/
 .docker/
 .dropbox/
+.fzf/
 .gem/
 .ghc/
 .gitcookies
