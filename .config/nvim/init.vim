@@ -30,8 +30,8 @@ set expandtab
 set ruler
 syntax on
 set smartindent
-" line numbers
 set nu
+set clipboard+=unnamedplus
 " }}}
 
 " vimscript editing convenience {{{
