@@ -2,6 +2,7 @@
 .DS_Store
 .Trash
 .Xauthority
+.android/
 .aws
 .bash_history
 .bash_sessions/
@@ -18,6 +19,7 @@
 .dlv/
 .docker/
 .dropbox/
+.emulator_console_auth_token
 .fzf/
 .gem/
 .ghc/
@@ -51,6 +53,7 @@
 .wget-hsts
 .zshenv
 .zshrc
+AndroidStudioProjects/
 Applications/
 Box/
 Desktop/
