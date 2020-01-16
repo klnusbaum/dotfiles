@@ -10,6 +10,7 @@ alias pklist="adb shell pm list packages -f"
 alias atext="adb shell input text"
 alias pd="pushd"
 alias vim="nvim"
+alias bb="gazelle"
 
 brules() {
   bazel query 'kind(rule, :*)'
