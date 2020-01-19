@@ -1,3 +1,4 @@
+PS1='\D{%F %T %z} [\u@\h \W]\$ '
 export CLICOLOR=1
 export EDITOR=vim
 export GOPATH=$HOME/sandbox/go-code
