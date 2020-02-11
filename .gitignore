@@ -30,6 +30,7 @@
 .local/
 .lpass
 .m2/
+.mysql_history
 .multirust
 .netrc
 .netrc_info
