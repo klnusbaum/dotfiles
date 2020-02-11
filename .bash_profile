@@ -13,7 +13,6 @@ alias pklist="adb shell pm list packages -f"
 alias atext="adb shell input text"
 alias pd="pushd"
 alias vim="nvim"
-alias bb="gazelle"
 
 if [ "$(uname)" == "Darwin" ]; then
   export BASH_SILENCE_DEPRECATION_WARNING=1
@@ -110,14 +109,6 @@ gt () {
 
 bt () {
   bazel test ...
-}
-
-btv () {
-  bazel test --test_arg=-test.v --test_output=all ...
-}
-
-bb () {
-  bazel build ...
 }
 
 mahlog () {
