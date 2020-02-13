@@ -7,11 +7,13 @@
 .bash_history
 .bash_sessions/
 .bashrc
+.bazelrc
 .bundle/
 .cache/
 .cargo/
 .cassandra/
 .ccm/
+.config/direnv
 .config/gtk-2.0/
 .config/inkscape/
 .config/nvim/.netrwhist
@@ -51,6 +53,7 @@
 .viminfo
 .virtualenvs/
 .vscode/
+.vscode-server/
 .wget-hsts
 .zshenv
 .zshrc
