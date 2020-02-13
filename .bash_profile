@@ -12,7 +12,6 @@ alias ss="adb shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > ~/Desktop/scre
 alias pklist="adb shell pm list packages -f"
 alias atext="adb shell input text"
 alias pd="pushd"
-alias vim="nvim"
 
 if [ "$(uname)" == "Darwin" ]; then
   export BASH_SILENCE_DEPRECATION_WARNING=1
