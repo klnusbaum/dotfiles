@@ -13,6 +13,8 @@ alias pklist="adb shell pm list packages -f"
 alias atext="adb shell input text"
 alias pd="pushd"
 
+eval "$(direnv hook bash)"
+
 brules() {
   bazel query 'kind(rule, :*)'
 }
