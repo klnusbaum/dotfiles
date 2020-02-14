@@ -13,10 +13,6 @@ alias pklist="adb shell pm list packages -f"
 alias atext="adb shell input text"
 alias pd="pushd"
 
-if [ "$(uname)" == "Darwin" ]; then
-  export BASH_SILENCE_DEPRECATION_WARNING=1
-fi
-
 brules() {
   bazel query 'kind(rule, :*)'
 }
