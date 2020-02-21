@@ -38,6 +38,15 @@ set clipboard+=unnamedplus
 nnoremap <leader>ev :split $MYVIMRC<cr>
 inoremap <leader>ev <esc>:split $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+
+function! _Dir()
+    execute 'edit' expand('%:p:h')
+endfunction
+
+command! Dir call _Dir()
+
+" Quickly call Dir function.
+nnoremap <leader>u :Dir<enter>
 " }}}
 
 
