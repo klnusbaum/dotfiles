@@ -1,7 +1,7 @@
 PS1='\D{%F %T %z} [\u@\h \W]\$ '
 export PATH=$HOME/bin:$PATH
 export CLICOLOR=1
-export EDITOR=vim
+export EDITOR=nvim
 export GOPATH=$HOME/sandbox/go-code
 export PATH=$PATH:$GOPATH/bin
 export HISTSIZE=10000
