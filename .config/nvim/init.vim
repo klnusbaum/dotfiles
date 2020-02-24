@@ -79,7 +79,7 @@ let g:airline_powerline_fonts = 1
 " ctrlp {{{
 let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 let g:ctrlp_use_caching = 1
-let g:ctrlp_cmd = 'CtrlP :pwd'
+let g:ctrlp_working_path_mode = 0
 " }}}
 
 " nerdtree {{{
