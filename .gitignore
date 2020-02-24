@@ -7,6 +7,7 @@
 .bash_history
 .bash_sessions/
 .bashrc
+.bazelcache/
 .bazelrc
 .bundle/
 .cache/
