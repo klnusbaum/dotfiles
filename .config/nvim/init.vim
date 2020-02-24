@@ -35,8 +35,8 @@ set clipboard+=unnamedplus
 " }}}
 
 " vimscript editing convenience {{{
-nnoremap <leader>ev :split $MYVIMRC<cr>
-inoremap <leader>ev <esc>:split $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+inoremap <leader>ev <esc>:vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
 function! _Dir()
