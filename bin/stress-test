@@ -1,0 +1,2 @@
+#!/bin/bash
+bazel test --runs_per_test=100 :go_default_test
