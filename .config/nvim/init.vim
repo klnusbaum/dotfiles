@@ -39,8 +39,9 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 inoremap <leader>ev <esc>:vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
 
+" functions {{{
 function! _Dir()
-    execute 'edit' expand('%:p:h')
+    execute 'vsplit' expand('%:p:h')
 endfunction
 
 command! Dir call _Dir()
