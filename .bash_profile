@@ -93,7 +93,7 @@ grp() {
 doreplace() {
   FIND=$1
   REPLACE=$2
-  git grep -l "$FIND" | xargs sed -i .bak "s/$FIND/$REPLACE/g"
+  git grep -l "$FIND" | xargs sed -i .bak $REPLACE
   clearbak
 }
 
