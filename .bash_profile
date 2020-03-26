@@ -12,6 +12,7 @@ alias ss="adb shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > ~/Desktop/scre
 alias pklist="adb shell pm list packages -f"
 alias atext="adb shell input text"
 alias pd="pushd"
+alias gg="git grep"
 
 eval "$(direnv hook bash)"
 
