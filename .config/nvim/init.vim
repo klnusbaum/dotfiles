@@ -72,6 +72,7 @@ autocmd FileType rust nnoremap <leader>ts :RustTest<cr>
 
 " deoplete {{{
 let g:deoplete#enable_at_startup = 1
+autocmd CompleteDone * silent! pclose!
 " }}}
 
 " airline settings {{{
