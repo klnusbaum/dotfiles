@@ -62,6 +62,7 @@ inoremap <leader>ns <esc>:set nospell<cr>
 " vim-go {{{
 let g:go_fmt_command = "goimports"
 autocmd FileType go nnoremap <leader>ts :GoTest<cr>
+autocmd FileType go nnoremap <leader>at :GoAlternate<cr>
 " }}}
 
 " rust vim {{{
