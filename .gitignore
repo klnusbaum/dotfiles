@@ -72,6 +72,7 @@ Pictures/
 Public/
 VirtualBox VMs/
 bin/vault
+bin/wally-cli
 git-completion.bash
 go-code/
 google-cloud-sdk/
