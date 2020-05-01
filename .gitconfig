@@ -6,7 +6,7 @@
     pull = pull --tags
     st = status
     rim = rebase -i master
-    rem = rebase master
+    rem = rebase origin/master
     co = checkout
     cm = commit
     ca = commit --amend --no-edit
