@@ -16,6 +16,10 @@ alias gg="git grep"
 
 eval "$(direnv hook bash)"
 
+# see https://cgibb.org/bash-history-zen for all the fun details on bash history
+HISTFILESIZE=100000
+HISTSIZE=$HISTFILESIZE
+
 brules() {
   bazel query 'kind(rule, :*)'
 }
@@ -110,7 +114,7 @@ bt () {
 }
 
 mahlog () {
-  git log --author=$(git config user.email)
+  git log --author=$(git config user.email) $@
 }
 
 export PATH="$HOME/.cargo/bin:$PATH"
