@@ -90,6 +90,11 @@ let g:ctrlp_working_path_mode = 0
 nmap <F6> :NERDTreeToggle<CR>
 " }}}
 
+" markdown editing {{{
+" Use gq to format Markdown to 100 chars.
+au BufRead,BufNewFile *.md setlocal textwidth=100
+" }}}
+
 " Wildignore stuff {{{
 set wildignore+=*/buck-out/*
 set wildignore+=*/target/*
