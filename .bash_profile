@@ -19,6 +19,10 @@ eval "$(direnv hook bash)"
 # see https://cgibb.org/bash-history-zen for all the fun details on bash history
 HISTFILESIZE=100000
 HISTSIZE=$HISTFILESIZE
+hsync() {
+  history -a
+  history -r
+}
 
 brules() {
   bazel query 'kind(rule, :*)'
