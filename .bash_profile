@@ -40,6 +40,10 @@ top_committers() {
   git shortlog -s --first-parent | uniq | sort -r | head -n "$1"
 }
 
+gl() {
+  git log -n $1
+}
+
 uuid()
 {
     local N B T
