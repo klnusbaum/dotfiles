@@ -1,2 +1,3 @@
 #!/bin/bash
-bazel test :go_default_test --test_filter="$1"
+bazel test :go_default_test --test_filter="$1" --test_arg=-test.v --test_output=all
+
