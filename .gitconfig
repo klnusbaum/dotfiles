@@ -5,7 +5,6 @@
     au = add -u
     pull = pull --tags
     st = status
-    rem = rebase origin/master
     co = checkout
     cm = commit
     ca = commit --amend --no-edit
