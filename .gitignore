@@ -51,6 +51,7 @@
 .stack/
 .subversion/
 .vault-token
+.vim
 .viminfo
 .virtualenvs/
 .vscode/

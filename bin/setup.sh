@@ -14,8 +14,6 @@ macinstall() {
    ensurebrew
    echo "Installing reattach-user-namespace"
    brew install reattach-to-user-namespace
-   echo "Installing neovim"
-   brew install neovim
    echo "Installing tmux"
    brew install tmux
    echo "Installing tree"
@@ -24,8 +22,6 @@ macinstall() {
    brew install wget
    echo "Installing python3"
    brew install python3
-   echo "installing pynvim"
-   pip3 install --user --upgrade pynvim
    echo "installing ripgrep"
    brew install ripgrep
    echo "installing imagemagick"
@@ -40,25 +36,8 @@ debinstall() {
     sudo apt upgrade
 
     echo "Installing extra packages"
-    sudo apt install tree neovim tmux python3-pip ripgrep
-
-    echo "Installing pynvim (for neovim)"
-    pip3 install --user --upgrade pynvim
-
+    sudo apt install tree tmux python3-pip ripgrep
 }
-
-powerline_fonts() {
-    echo "Installing powerline fonts"
-    echo "Remember to set your terminal font size to an odd number"
-    echo "Preferred Font is \"Literation Mono\""
-    git clone https://github.com/powerline/fonts.git --depth=1
-    pushd fonts || exit
-    ./install.sh
-    popd || exit
-    rm -rf fonts
-}
-
-
 
 if [ "$(uname)" = "Darwin" ]
 then
@@ -76,7 +55,5 @@ rustup component add rls rust-analysis rust-src
 
 
 echo "Installing Plug for vim"
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-vim +PlugInstall +qall > /dev/null
-
-powerline_fonts
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
