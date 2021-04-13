@@ -41,7 +41,11 @@ top_committers() {
 }
 
 gl() {
-  git log -n $1
+  if [ $# -eq 0 ]; then
+    git log -n 1
+  else
+    git log -n $1
+  fi
 }
 
 uuid()
