@@ -41,6 +41,7 @@
 .npm/
 .nvm/
 .oracle_jre_usage/
+.parallel
 .pip
 .profile
 .python_history
