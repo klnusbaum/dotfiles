@@ -23,6 +23,8 @@
 .docker/
 .dropbox/
 .emulator_console_auth_token
+.fzf.bash
+.fzf.zsh
 .fzf/
 .gem/
 .ghc/
