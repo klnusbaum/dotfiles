@@ -122,7 +122,7 @@ gt () {
 }
 
 bt () {
-  bazel test ...
+  bazel test :all
 }
 
 mahlog () {
