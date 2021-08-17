@@ -14,6 +14,19 @@ alias atext="adb shell input text"
 alias pd="pushd"
 alias gg="git grep"
 
+fix_preamble() {
+  FIX_FILE="$1"
+  if [ -z "$FIX_FILE" ]
+  then
+    echo "Please provide filename"
+    return 1
+  fi
+  echo "#!/usr/bin/env bash" >> "$FIX_FILE"
+  echo "" >> "$FIX_FILE"
+  echo "set -ex" >> "$FIX_FILE"
+  chmod u+x "$FIX_FILE"
+}
+
 eval "$(direnv hook bash)"
 
 # see https://cgibb.org/bash-history-zen for all the fun details on bash history
