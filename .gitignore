@@ -32,6 +32,7 @@
 .glide/
 .gradle/
 .jenv/
+.lesshst
 .local/
 .lpass
 .m2/
