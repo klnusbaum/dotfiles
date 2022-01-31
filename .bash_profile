@@ -1,18 +1,16 @@
 PS1='\D{%F %T %z} [\u@\h \W]\$ '
 export PATH=$HOME/bin:$PATH
 export CLICOLOR=1
-export EDITOR=nvim
+export EDITOR=vim
 export GOPATH=$HOME/sandbox/go-code
 export PATH=$PATH:$GOPATH/bin
 export HISTSIZE=10000
 alias l="ls -l"
-alias whatsnew="git diff HEAD^ --name-only"
 alias logcat="adb logcat -v time"
 alias ss="adb shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > ~/Desktop/screen.png"
 alias pklist="adb shell pm list packages -f"
 alias atext="adb shell input text"
 alias pd="pushd"
-alias gg="git grep"
 
 fix_preamble() {
   FIX_FILE="$1"
@@ -50,7 +48,7 @@ top10commiters() {
 }
 
 top_committers() {
-  git shortlog -s --first-parent | uniq | sort -r | head -n "$1"
+  git shortlog -s --first-parent | uniq | sort -r | grep -vi bot | head -n "$1"
 }
 
 gl() {
@@ -157,3 +155,9 @@ fi
 if [ "$(uname)" = "Darwin" ] && [ -f `brew --prefix`/etc/bash_completion.d/bazel-complete.bash ]; then
   . `brew --prefix`/etc/bash_completion.d/bazel-complete.bash
 fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/kurtis/google-cloud-sdk/path.bash.inc' ]; then . '/Users/kurtis/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/kurtis/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/kurtis/google-cloud-sdk/completion.bash.inc'; fi
