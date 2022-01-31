@@ -63,6 +63,7 @@
 .wget-hsts
 .zshenv
 .zshrc
+.zsh_history
 AndroidStudioProjects/
 Applications/
 Box/
