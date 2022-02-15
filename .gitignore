@@ -81,8 +81,7 @@ Music/
 Pictures/
 Public/
 VirtualBox VMs/
-bin/vault
-bin/wally-cli
+bin/
 git-completion.bash
 go-code/
 google-cloud-sdk/
