@@ -3,6 +3,7 @@
 .Trash
 .Xauthority
 .android/
+.arcrc
 .aws
 .bash_history
 .bash_sessions/
@@ -18,6 +19,8 @@
 .config/gtk-2.0/
 .config/inkscape/
 .config/nvim/.netrwhist
+.config/JetBrains
+.config/direnv
 .cups/
 .dlv/
 .docker/
@@ -42,6 +45,7 @@
 .netrc_info
 .node-gyp/
 .npm/
+.npmrc
 .nvm/
 .oracle_jre_usage/
 .parallel
