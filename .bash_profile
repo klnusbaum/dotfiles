@@ -1,5 +1,5 @@
 PS1='\D{%F %T %z} [\u@\h \W]\$ '
-export PATH=$HOME/kopt/bin:$PATH
+export PATH=$HOME/kopt/bin:$HOME/kopt/work/bin:$PATH
 export CLICOLOR=1
 export EDITOR=vim
 export GOPATH=$HOME/sandbox/go-code
