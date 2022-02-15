@@ -140,9 +140,11 @@ mahlog () {
   git log --author=$(git config user.email) $@
 }
 
-export PATH="$HOME/.cargo/bin:$PATH"
-rust_src_lib=$(rustc --print sysroot)/lib/rustlib/src/rust/src
-export RUST_SRC_PATH=$rust_src_lib
+if [ -x "$(command -v rustc)" ]; then
+  export PATH="$HOME/.cargo/bin:$PATH"
+  rust_src_lib=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+  export RUST_SRC_PATH=$rust_src_lib
+fi
 
 clearbak() {
   find . -name "*.bak" -delete
