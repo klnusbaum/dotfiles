@@ -12,6 +12,10 @@ alias pklist="adb shell pm list packages -f"
 alias atext="adb shell input text"
 alias pd="pushd"
 
+if [ -f "$HOME/kopt/work/config/bash_additions.inc" ]; then
+  source $HOME/kopt/work/config/bash_additions.inc
+fi
+
 fix_preamble() {
   FIX_FILE="$1"
   if [ -z "$FIX_FILE" ]
