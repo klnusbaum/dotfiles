@@ -79,7 +79,7 @@ Music/
 Pictures/
 Public/
 VirtualBox VMs/
-bin/
+/bin/
 git-completion.bash
 go-code/
 google-cloud-sdk/
