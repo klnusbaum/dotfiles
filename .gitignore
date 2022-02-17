@@ -65,7 +65,6 @@
 .vscode/
 .vscode-server/
 .wget-hsts
-.zshenv
 .zshrc
 .zsh_history
 AndroidStudioProjects/
