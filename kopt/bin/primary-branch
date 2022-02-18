@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+PRIMARY_BRANCH="master"
+if [[ "$(git branch)" == *"main"* ]]; then
+  PRIMARY_BRANCH="main"
+fi
+
+echo "${PRIMARY_BRANCH}"
