@@ -1,0 +1,5 @@
+if [[ "$REMOTE_WORK_SERVER" == "" ]]; then
+  echo "REMOTE_WORK_SERVER environment variable not set"
+  exit 0
+fi
+ssh "$REMOTE_WORK_SERVER" -t tmux new-session -A -s work
