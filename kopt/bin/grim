@@ -1,2 +1,4 @@
 #!/bin/bash
-git rebase -i $(git merge-base HEAD origin/master)
+PRIMAY_BRANCH="$(primary-branch)"
+REWIND_UNTIL="$(git merge-base HEAD ${PRIMAY_BRANCH})"
+git rebase -i "${REWIND_UNTIL}"
