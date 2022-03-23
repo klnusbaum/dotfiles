@@ -2,7 +2,7 @@ FIX_FILE="$1"
 if [ -z "$FIX_FILE" ]
 then
   echo "Please provide filename"
-  return 1
+  exit 1
 fi
 echo "#!/usr/bin/env bash" >> "$FIX_FILE"
 echo "" >> "$FIX_FILE"
