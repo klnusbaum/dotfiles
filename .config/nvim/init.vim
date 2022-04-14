@@ -2,6 +2,7 @@
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
