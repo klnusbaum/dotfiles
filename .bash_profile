@@ -91,14 +91,6 @@ gt () {
   go test -v -race -run "$1"
 }
 
-bt () {
-  bazel test :all
-}
-
-mahlog () {
-  git log --author=$(git config user.email) $@
-}
-
 if [ -x "$(command -v rustc)" ]; then
   export PATH="$HOME/.cargo/bin:$PATH"
   rust_src_lib=$(rustc --print sysroot)/lib/rustlib/src/rust/src
