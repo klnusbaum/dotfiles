@@ -11,6 +11,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
+Plug 'Olical/conjure'
 call plug#end()
 " }}}
 
@@ -31,12 +32,29 @@ set nu
 set clipboard=unnamed
 " }}}
 
+" terminal customizations {{{
+autocmd TermOpen * setlocal nonumber norelativenumber
+
+tnoremap <c-\><c-w> <c-\><c-n><c-w><c-w>
+
+command! Ot :vsplit term://zsh
+nnoremap <leader>ot :Ot<enter>a
+inoremap <leader>ot <esc>:Ot<enter>a
+" }}}
+
 " vimscript editing convenience {{{
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 inoremap <leader>ev <esc>:vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
+" }}}
 
-" functions {{{
+" split preferences {{{
+set splitbelow
+set splitright
+" }}}
+
+
+" netrw launching {{{
 function! _Dir()
     execute 'vsplit' expand('%:p:h')
 endfunction
@@ -53,7 +71,7 @@ autocmd BufWritePost *.star,*.bzl,*.bazel edit | redraw
 " }}}
 
 
-" fun short cuts {{{
+" spelling short cuts {{{
 nnoremap <leader>ss :set spell<cr>
 inoremap <leader>ss <esc>:set spell<cr>
 nnoremap <leader>ns :set nospell<cr>
@@ -85,10 +103,6 @@ let g:ctrlp_working_path_mode = 0
 
 " nerdtree {{{
 nmap <F6> :NERDTreeToggle<CR>
-" }}}
-
-" terminal settings {{{
-autocmd TermOpen * setlocal nonumber norelativenumber
 " }}}
 
 " markdown editing {{{
