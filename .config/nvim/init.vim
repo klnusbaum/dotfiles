@@ -34,12 +34,17 @@ set clipboard=unnamed
 
 " terminal customizations {{{
 autocmd TermOpen * setlocal nonumber norelativenumber
+autocmd BufWinEnter,WinEnter term://* startinsert
 
 tnoremap <c-\><c-w> <c-\><c-n><c-w><c-w>
+tnoremap <c-\><c-h> <c-\><c-n><c-w>h
+tnoremap <c-\><c-j> <c-\><c-n><c-w>j
+tnoremap <c-\><c-k> <c-\><c-n><c-w>k
+tnoremap <c-\><c-l> <c-\><c-n><c-w>l
 
 command! Ot :vsplit term://zsh
-nnoremap <leader>ot :Ot<enter>a
-inoremap <leader>ot <esc>:Ot<enter>a
+nnoremap <leader>ot :Ot<enter>
+inoremap <leader>ot <esc>:Ot<enter>
 " }}}
 
 " vimscript editing convenience {{{
@@ -108,6 +113,19 @@ nmap <F6> :NERDTreeToggle<CR>
 " markdown editing {{{
 " Use gq to format Markdown to 100 chars.
 au BufRead,BufNewFile *.md setlocal textwidth=100
+" }}}
+
+" git stuff {{{
+command! QuickUpdate :Git add --update <bar> Git commit --amend --no-edit
+
+nnoremap <leader>qu :QuickUpdate<cr>
+inoremap <leader>qu <esc>:QuickUpdate<cr>
+" }}}
+
+" arc stuff {{{
+command! Ad :vsplit term://ad
+nnoremap <leader>ad :Ad<cr>
+inoremap <leader>ad <esc>:Ad<cr>
 " }}}
 
 " Wildignore stuff {{{
