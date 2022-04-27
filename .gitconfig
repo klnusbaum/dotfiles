@@ -6,6 +6,8 @@
     cm = commit
     ca = commit --amend --no-edit
     br = branch
+    re = rebase
+    ri = rebase -i
     rc = rebase --continue
     cpick = cherry-pick
     lg = log --graph --decorate --abbrev-commit --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --branches --remotes
@@ -15,3 +17,5 @@
     default = simple
 [rerere]
     enabled = true
+[log]
+    decorate = true
