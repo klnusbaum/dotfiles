@@ -77,10 +77,12 @@ autocmd BufWritePost *.star,*.bzl,*.bazel edit | redraw
 
 
 " spelling short cuts {{{
-nnoremap <leader>ss :set spell<cr>
-inoremap <leader>ss <esc>:set spell<cr>
-nnoremap <leader>ns :set nospell<cr>
-inoremap <leader>ns <esc>:set nospell<cr>
+lua << EOF
+vim.keymap.set("n", "<leader>ss", ":set spell<cr>", {})
+vim.keymap.set("i", "<leader>ss", "<esc>:set spell<cr>", {})
+vim.keymap.set("n", "<leader>ns", ":set nospell<cr>", {})
+vim.keymap.set("i", "<leader>ns", "<esc>:set nospell<cr>", {})
+EOF
 " }}}
 
 " vim-go {{{
@@ -126,6 +128,14 @@ inoremap <leader>qu <esc>:QuickUpdate<cr>
 command! Ad :vsplit term://ad
 nnoremap <leader>ad :Ad<cr>
 inoremap <leader>ad <esc>:Ad<cr>
+
+lua << EOF
+vim.keymap.set('n', '<leader>ud', function()
+  vim.ui.input({ prompt = 'Diff message: '}, function(input)
+    vim.api.nvim_command('vs | term arc diff HEAD^ -m "' .. input .. '"')
+  end)
+end)
+EOF
 " }}}
 
 " Wildignore stuff {{{
