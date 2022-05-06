@@ -121,7 +121,7 @@ au BufRead,BufNewFile *.md setlocal textwidth=100
 command! QuickUpdate :Git add --update <bar> Git commit --amend --no-edit
 
 nnoremap <leader>qu :QuickUpdate<cr>
-inoremap <leader>qu <esc>:QuickUpdate<cr>
+nnoremap <leader>gga :Git add --update<cr>
 " }}}
 
 " arc stuff {{{
