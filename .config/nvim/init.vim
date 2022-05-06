@@ -130,6 +130,14 @@ command! QuickUpdate :Git add --update <bar> Git commit --amend --no-edit
 
 nnoremap <leader>qu :QuickUpdate<cr>
 nnoremap <leader>gga :Git add --update<cr>
+
+lua << EOF
+vim.keymap.set('n', '<leader>ggc', function()
+  vim.ui.input({ prompt = 'Commit message: '}, function(input)
+    vim.api.nvim_command('Git commit -m "' .. input .. '"')
+  end)
+end)
+EOF
 " }}}
 
 " arc stuff {{{
