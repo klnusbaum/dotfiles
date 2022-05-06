@@ -8,7 +8,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'rust-lang/rust.vim'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'scrooloose/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 Plug 'Olical/conjure'
@@ -114,10 +113,6 @@ vim.g.ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 vim.g.ctrlp_use_caching = 1
 vim.g.ctrlp_working_path_mode = 0
 EOF
-" }}}
-
-" nerdtree {{{
-nmap <F6> :NERDTreeToggle<CR>
 " }}}
 
 " markdown editing {{{
