@@ -16,8 +16,10 @@ call plug#end()
 " }}}
 
 " netrw {{{
-let g:netrw_liststyle = 3
-let g:netrw_banner = 1
+lua << EOF
+vim.g.netrw_liststyle = 3
+vim.g.netrw_banner = 1
+EOF
 " }}}
 
 " Misc Options {{{
@@ -94,18 +96,24 @@ autocmd FileType go nnoremap <leader>at :GoAlternate<cr>
 " }}}
 
 " rust vim {{{
-let g:rustfmt_autosave = 1 
+lua << EOF
+vim.g.rustfmt_autosave = 1 
+EOF
 autocmd FileType rust nnoremap <leader>ts :RustTest<cr>
 " }}}
 
 " airline settings {{{
-let g:airline_theme='deus'
+lua << EOF
+vim.g.airline_theme = 'deus'
+EOF
 " }}}
 
 " ctrlp {{{
-let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-let g:ctrlp_use_caching = 1
-let g:ctrlp_working_path_mode = 0
+lua << EOF
+vim.g.ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+vim.g.ctrlp_use_caching = 1
+vim.g.ctrlp_working_path_mode = 0
+EOF
 " }}}
 
 " nerdtree {{{
