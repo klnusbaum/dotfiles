@@ -22,17 +22,17 @@ EOF
 " }}}
 
 " Misc Options {{{
-set mouse=a
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set ruler
-syntax on
-set smartindent
-set nu
-set clipboard=unnamed
-set splitbelow
-set splitright
+lua << EOF
+vim.opt.nu=true
+vim.opt.mouse=a
+vim.opt.tabstop=2
+vim.opt.shiftwidth=2
+vim.opt.expandtab=true
+vim.opt.smartindent=true
+vim.opt.clipboard=unnamed
+vim.opt.splitbelow=true
+vim.opt.splitright=true
+EOF
 " }}}
 
 " terminal customizations {{{
