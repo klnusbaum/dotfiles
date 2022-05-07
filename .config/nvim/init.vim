@@ -47,15 +47,16 @@ tkmap("<c-\\><c-k>","<c-\\><c-n><c-w>k")
 tkmap("<c-\\><c-l>","<c-\\><c-n><c-w>l")
 
 nkmap("<leader>ot", function()
-  vim.cmd("vsplit | term")
+  vim.api.nvim_command("vsplit | term")
 end)
 
 -- vim config editing convenience
 nkmap("<leader>ev", function ()
-  vim.cmd("vsplit $MYVIMRC")
+  vim.api.nvim_command("vsplit $MYVIMRC")
 end)
 nkmap("<leader>sv", function ()
-  vim.cmd("source $MYVIMRC")
+  vim.api.nvim_command("source $MYVIMRC")
+  vim.notify('Reloaded $MYVIMRC')
 end)
 
 -- Netrw settings
