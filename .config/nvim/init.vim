@@ -18,10 +18,6 @@ lua << EOF
 local tkmap = require("keymappings").tkmap
 local nkmap = require("keymappings").nkmap
 
--- Netrw settings
-vim.g.netrw_liststyle = 3
-vim.g.netrw_banner = 1
-
 -- Misc options settings
 vim.opt.nu=true
 vim.opt.mouse=a
@@ -62,18 +58,13 @@ nkmap("<leader>sv", function ()
   vim.cmd("source $MYVIMRC")
 end)
 
+-- Netrw settings
+vim.g.netrw_liststyle = 3
+vim.g.netrw_banner = 1
+nkmap("<leader>u", function()
+  vim.api.nvim_command('Vexplore')
+end)
 EOF
-
-" netrw launching {{{
-function! _Dir()
-    execute 'vsplit' expand('%:p:h')
-endfunction
-
-command! Dir call _Dir()
-
-" Quickly call Dir function.
-nnoremap <leader>u :Dir<enter>
-" }}}
 
 " bazel auto format {{{
 autocmd BufWritePost *.star,*.bzl,*.bazel execute "! /Users/kurtis/go-code/bin/buildifier " . shellescape(expand('%p')) . " || read"  | redraw!
