@@ -50,7 +50,7 @@ tkmap("<c-\\><c-j>","<c-\\><c-n><c-w>j")
 tkmap("<c-\\><c-k>","<c-\\><c-n><c-w>k")
 tkmap("<c-\\><c-l>","<c-\\><c-n><c-w>l")
 
-nkmap('n', "<leader>ot", function()
+nkmap("<leader>ot", function()
   vim.cmd("vsplit | term")
 end)
 EOF
