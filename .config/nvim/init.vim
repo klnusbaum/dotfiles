@@ -53,13 +53,16 @@ tkmap("<c-\\><c-l>","<c-\\><c-n><c-w>l")
 nkmap("<leader>ot", function()
   vim.cmd("vsplit | term")
 end)
-EOF
 
-" vimscript editing convenience {{{
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-inoremap <leader>ev <esc>:vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-" }}}
+-- vim config editing convenience
+nkmap("<leader>ev", function ()
+  vim.cmd("vsplit $MYVIMRC")
+end)
+nkmap("<leader>sv", function ()
+  vim.cmd("source $MYVIMRC")
+end)
+
+EOF
 
 " netrw launching {{{
 function! _Dir()
