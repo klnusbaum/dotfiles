@@ -14,15 +14,12 @@ Plug 'Olical/conjure'
 call plug#end()
 " }}}
 
-" netrw {{{
 lua << EOF
+-- Netrw settings
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 1
-EOF
-" }}}
 
-" Misc Options {{{
-lua << EOF
+-- Misc options settings
 vim.opt.nu=true
 vim.opt.mouse=a
 vim.opt.tabstop=2
@@ -33,7 +30,6 @@ vim.opt.clipboard=unnamed
 vim.opt.splitbelow=true
 vim.opt.splitright=true
 EOF
-" }}}
 
 " terminal customizations {{{
 autocmd TermOpen * setlocal nonumber norelativenumber
