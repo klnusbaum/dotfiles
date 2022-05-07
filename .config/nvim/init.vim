@@ -15,6 +15,9 @@ call plug#end()
 " }}}
 
 lua << EOF
+local tkmap = require("keymappings").tkmap
+local nkmap = require("keymappings").nkmap
+
 -- Netrw settings
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 1
@@ -29,22 +32,28 @@ vim.opt.smartindent=true
 vim.opt.clipboard=unnamed
 vim.opt.splitbelow=true
 vim.opt.splitright=true
+
+-- terminal customizations 
+vim.api.nvim_create_autocmd({"TermOpen"}, {
+  pattern = "*",
+  command = "setlocal nonumber",
+})
+
+vim.api.nvim_create_autocmd({"BufWinEnter","WinEnter"}, {
+  pattern = "term://*",
+  command = "startinsert",
+})
+
+tkmap("<c-\\><c-w>","<c-\\><c-n><c-w><c-w>")
+tkmap("<c-\\><c-h>","<c-\\><c-n><c-w>h")
+tkmap("<c-\\><c-j>","<c-\\><c-n><c-w>j")
+tkmap("<c-\\><c-k>","<c-\\><c-n><c-w>k")
+tkmap("<c-\\><c-l>","<c-\\><c-n><c-w>l")
+
+nkmap('n', "<leader>ot", function()
+  vim.cmd("vsplit | term")
+end)
 EOF
-
-" terminal customizations {{{
-autocmd TermOpen * setlocal nonumber norelativenumber
-autocmd BufWinEnter,WinEnter term://* startinsert
-
-tnoremap <c-\><c-w> <c-\><c-n><c-w><c-w>
-tnoremap <c-\><c-h> <c-\><c-n><c-w>h
-tnoremap <c-\><c-j> <c-\><c-n><c-w>j
-tnoremap <c-\><c-k> <c-\><c-n><c-w>k
-tnoremap <c-\><c-l> <c-\><c-n><c-w>l
-
-command! Ot :vsplit term://zsh
-nnoremap <leader>ot :Ot<enter>
-inoremap <leader>ot <esc>:Ot<enter>
-" }}}
 
 " vimscript editing convenience {{{
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
