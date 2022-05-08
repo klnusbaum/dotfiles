@@ -46,15 +46,15 @@ tkmap("<c-\\><c-j>","<c-\\><c-n><c-w>j")
 tkmap("<c-\\><c-k>","<c-\\><c-n><c-w>k")
 tkmap("<c-\\><c-l>","<c-\\><c-n><c-w>l")
 
-nkmap("<leader>ot", function()
+nkmap("ot", function()
   vim.api.nvim_command("vsplit | term")
 end)
 
 -- vim config editing convenience
-nkmap("<leader>ev", function ()
+nkmap("ev", function ()
   vim.api.nvim_command("vsplit $MYVIMRC")
 end)
-nkmap("<leader>sv", function ()
+nkmap("sv", function ()
   vim.api.nvim_command("source $MYVIMRC")
   vim.notify('Reloaded $MYVIMRC')
 end)
@@ -62,7 +62,7 @@ end)
 -- Netrw settings
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 1
-nkmap("<leader>u", function()
+nkmap("u", function()
   vim.api.nvim_command('Vexplore')
 end)
 EOF

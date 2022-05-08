@@ -1,15 +1,15 @@
 local M = {}
 
-local function makemap(mode, lhs, rhs)
-  vim.keymap.set(mode, lhs, rhs, { noremap = true })
+local function makemap(mode, shortcut, action)
+  vim.keymap.set(mode, shortcut, action, { noremap = true })
 end
 
-function M.tkmap(lhs, rhs)
-    makemap('t', lhs, rhs, { noremap = true })
+function M.tkmap(shortcut, action)
+    makemap('t', shortcut, action, { noremap = true })
 end
 
-function M.nkmap(lhs, rhs)
-    makemap('n', lhs, rhs, { noremap = true })
+function M.nkmap(shortcut, action)
+    makemap('n', '<leader>' .. shortcut, action, { noremap = true })
 end
 
 return M
