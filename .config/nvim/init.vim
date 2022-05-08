@@ -31,7 +31,7 @@ vim.opt.splitbelow=true
 vim.opt.splitright=true
 
 -- terminal customizations 
-new_autocmd({"TermOpen"}, {
+new_autocmd("TermOpen", {
   pattern = "*",
   command = "setlocal nonumber",
 })
