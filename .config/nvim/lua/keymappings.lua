@@ -1,15 +1,14 @@
 local M = {}
 
-local function makemap(mode, shortcut, action)
-  vim.keymap.set(mode, shortcut, action, { noremap = true })
-end
+local ext_opts = require("options").ext_opts
 
 function M.tkmap(shortcut, action)
-    makemap('t', shortcut, action, { noremap = true })
+    vim.keymap.set('t', shortcut, action)
 end
 
-function M.nkmap(shortcut, action)
-    makemap('n', '<leader>' .. shortcut, action, { noremap = true })
+function M.nkmap(shortcut, action, opts)
+    local all_opts = ext_opts({ noremap = true }, opts)
+    vim.keymap.set('n', '<leader>' .. shortcut, action, opts)
 end
 
 return M
