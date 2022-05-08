@@ -17,6 +17,7 @@ call plug#end()
 lua << EOF
 local tkmap = require("keymappings").tkmap
 local nkmap = require("keymappings").nkmap
+local new_autocmd = require("myautocmd").new_autocmd
 
 -- Misc options settings
 vim.opt.nu=true
@@ -30,12 +31,11 @@ vim.opt.splitbelow=true
 vim.opt.splitright=true
 
 -- terminal customizations 
-vim.api.nvim_create_autocmd({"TermOpen"}, {
+new_autocmd({"TermOpen"}, {
   pattern = "*",
   command = "setlocal nonumber",
 })
-
-vim.api.nvim_create_autocmd({"BufWinEnter","WinEnter"}, {
+new_autocmd({"BufWinEnter","WinEnter"}, {
   pattern = "term://*",
   command = "startinsert",
 })
