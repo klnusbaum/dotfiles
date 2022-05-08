@@ -65,21 +65,19 @@ vim.g.netrw_banner = 1
 nkmap("u", function()
   vim.api.nvim_command('Vexplore')
 end)
+
+-- spelling shortcuts
+nkmap("ss", function()
+  vim.opt.spell = true
+end)
+nkmap("ns", function()
+  vim.opt.spell = false
+end)
 EOF
 
 " bazel auto format {{{
 autocmd BufWritePost *.star,*.bzl,*.bazel execute "! /Users/kurtis/go-code/bin/buildifier " . shellescape(expand('%p')) . " || read"  | redraw!
 autocmd BufWritePost *.star,*.bzl,*.bazel edit | redraw
-" }}}
-
-
-" spelling short cuts {{{
-lua << EOF
-vim.keymap.set("n", "<leader>ss", ":set spell<cr>", {})
-vim.keymap.set("i", "<leader>ss", "<esc>:set spell<cr>", {})
-vim.keymap.set("n", "<leader>ns", ":set nospell<cr>", {})
-vim.keymap.set("i", "<leader>ns", "<esc>:set nospell<cr>", {})
-EOF
 " }}}
 
 " vim-go {{{
