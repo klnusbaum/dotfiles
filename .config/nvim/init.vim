@@ -95,16 +95,12 @@ vim.g.airline_theme = 'deus'
 vim.g.ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 vim.g.ctrlp_use_caching = 1
 vim.g.ctrlp_working_path_mode = 0
+
 EOF
 
 " bazel auto format {{{
 autocmd BufWritePost *.star,*.bzl,*.bazel execute "! /Users/kurtis/go-code/bin/buildifier " . shellescape(expand('%p')) . " || read"  | redraw!
 autocmd BufWritePost *.star,*.bzl,*.bazel edit | redraw
-" }}}
-
-" markdown editing {{{
-" Use gq to format Markdown to 100 chars.
-au BufRead,BufNewFile *.md setlocal textwidth=100
 " }}}
 
 " git stuff {{{
