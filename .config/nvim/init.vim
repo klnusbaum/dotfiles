@@ -122,9 +122,3 @@ EOF
 autocmd BufWritePost *.star,*.bzl,*.bazel execute "! /Users/kurtis/go-code/bin/buildifier " . shellescape(expand('%p')) . " || read"  | redraw!
 autocmd BufWritePost *.star,*.bzl,*.bazel edit | redraw
 " }}}
-
-
-" Wildignore stuff {{{
-set wildignore+=*/buck-out/*
-set wildignore+=*/target/*
-" }}}
