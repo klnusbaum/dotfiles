@@ -73,19 +73,27 @@ end)
 nkmap("ns", function()
   vim.opt.spell = false
 end)
+
+-- vim-go settings
+vim.g.go_fmt_options = {
+   gopls= '-local selector,inventory,gopkg.in,google.golang.org,code.uber.internal,thriftrw,thrift,gogoproto,go.uber.org,golang.org,github.com,mock',
+}
+
+go_keymaps = function ()
+  nkmap("ts", function() vim.api.nvim_command("GoTest") end)
+  nkmap("at", function() vim.api.nvim_command("GoAlternate") end)
+end
+
+new_autocmd("Filetype", {
+  pattern = "go",
+  callback = go_keymaps,
+})
+
 EOF
 
 " bazel auto format {{{
 autocmd BufWritePost *.star,*.bzl,*.bazel execute "! /Users/kurtis/go-code/bin/buildifier " . shellescape(expand('%p')) . " || read"  | redraw!
 autocmd BufWritePost *.star,*.bzl,*.bazel edit | redraw
-" }}}
-
-" vim-go {{{
-let g:go_fmt_options = {
-    \ 'gopls': '-local selector,inventory,gopkg.in,google.golang.org,code.uber.internal,thriftrw,thrift,gogoproto,go.uber.org,golang.org,github.com,mock',
-    \ }
-autocmd FileType go nnoremap <leader>ts :GoTest<cr>
-autocmd FileType go nnoremap <leader>at :GoAlternate<cr>
 " }}}
 
 " rust vim {{{
