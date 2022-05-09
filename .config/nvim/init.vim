@@ -104,6 +104,15 @@ nkmap('ggc', function()
     vim.api.nvim_command('Git commit -m "' .. input .. '"')
   end)
 end)
+
+-- Arc customizations
+nkmap("ad", function() vim.api.nvim_command("vsplit term://ad") end)
+nkmap('ud', function()
+  vim.ui.input({ prompt = 'Diff message: '}, function(input)
+    vim.api.nvim_command('vs | term arc diff HEAD^ -m "' .. input .. '"')
+  end)
+end)
+
 EOF
 
 " bazel auto format {{{
@@ -111,19 +120,6 @@ autocmd BufWritePost *.star,*.bzl,*.bazel execute "! /Users/kurtis/go-code/bin/b
 autocmd BufWritePost *.star,*.bzl,*.bazel edit | redraw
 " }}}
 
-" arc stuff {{{
-command! Ad :vsplit term://ad
-nnoremap <leader>ad :Ad<cr>
-inoremap <leader>ad <esc>:Ad<cr>
-
-lua << EOF
-vim.keymap.set('n', '<leader>ud', function()
-  vim.ui.input({ prompt = 'Diff message: '}, function(input)
-    vim.api.nvim_command('vs | term arc diff HEAD^ -m "' .. input .. '"')
-  end)
-end)
-EOF
-" }}}
 
 " Wildignore stuff {{{
 set wildignore+=*/buck-out/*
