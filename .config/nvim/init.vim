@@ -97,7 +97,10 @@ vim.g.ctrlp_use_caching = 1
 vim.g.ctrlp_working_path_mode = 0
 
 -- Fugitive (git) customizations
-nkmap('ggu', function() vim.api.nvim_command("Git add --update") end)
+nkmap('ggu', function() 
+  vim.api.nvim_command("Git add --update") 
+  vim.notify('git added all updated files')
+end)
 nkmap('gga', function() vim.api.nvim_command("Git commit --amend --no-edit") end)
 nkmap('ggc', function()
   vim.ui.input({ prompt = 'Commit message: '}, function(input)
