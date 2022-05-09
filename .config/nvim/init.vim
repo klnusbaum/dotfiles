@@ -88,25 +88,18 @@ new_autocmd("Filetype", {
   callback = go_keymaps,
 })
 
+-- Airline settings
+vim.g.airline_theme = 'deus'
+
+-- ctrlp settings
+vim.g.ctrlp_user_command = 'rg %s --files --color=never --glob ""'
+vim.g.ctrlp_use_caching = 1
+vim.g.ctrlp_working_path_mode = 0
 EOF
 
 " bazel auto format {{{
 autocmd BufWritePost *.star,*.bzl,*.bazel execute "! /Users/kurtis/go-code/bin/buildifier " . shellescape(expand('%p')) . " || read"  | redraw!
 autocmd BufWritePost *.star,*.bzl,*.bazel edit | redraw
-" }}}
-
-" airline settings {{{
-lua << EOF
-vim.g.airline_theme = 'deus'
-EOF
-" }}}
-
-" ctrlp {{{
-lua << EOF
-vim.g.ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-vim.g.ctrlp_use_caching = 1
-vim.g.ctrlp_working_path_mode = 0
-EOF
 " }}}
 
 " markdown editing {{{
