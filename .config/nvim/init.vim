@@ -96,26 +96,19 @@ vim.g.ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 vim.g.ctrlp_use_caching = 1
 vim.g.ctrlp_working_path_mode = 0
 
-EOF
-
-" bazel auto format {{{
-autocmd BufWritePost *.star,*.bzl,*.bazel execute "! /Users/kurtis/go-code/bin/buildifier " . shellescape(expand('%p')) . " || read"  | redraw!
-autocmd BufWritePost *.star,*.bzl,*.bazel edit | redraw
-" }}}
-
-" git stuff {{{
-command! QuickUpdate :Git add --update <bar> Git commit --amend --no-edit
-
-nnoremap <leader>qu :QuickUpdate<cr>
-nnoremap <leader>gga :Git add --update<cr>
-
-lua << EOF
-vim.keymap.set('n', '<leader>ggc', function()
+-- Fugitive (git) customizations
+nkmap('ggu', function() vim.api.nvim_command("Git add --update") end)
+nkmap('gga', function() vim.api.nvim_command("Git commit --amend --no-edit") end)
+nkmap('ggc', function()
   vim.ui.input({ prompt = 'Commit message: '}, function(input)
     vim.api.nvim_command('Git commit -m "' .. input .. '"')
   end)
 end)
 EOF
+
+" bazel auto format {{{
+autocmd BufWritePost *.star,*.bzl,*.bazel execute "! /Users/kurtis/go-code/bin/buildifier " . shellescape(expand('%p')) . " || read"  | redraw!
+autocmd BufWritePost *.star,*.bzl,*.bazel edit | redraw
 " }}}
 
 " arc stuff {{{
