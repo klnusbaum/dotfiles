@@ -9,6 +9,7 @@ autoload -Uz compinit && compinit
 export PATH=$HOME/bin:$HOME/kopt/bin:$HOME/kopt/work/bin:$HOME/google-cloud-sdk/bin:$PATH
 export EDITOR=nvim
 export GOPATH=$HOME/sandbox/go-code
+export PATH=$PATH:$GOPATH/bin
 bindkey -e
 
 if [ -f "$HOME/kopt/work/config/zsh_additions.inc" ]; then
