@@ -1,16 +1,19 @@
 " plugins {{{
 call plug#begin('~/.local/share/nvim/plugged')
+Plug 'neovim/nvim-lspconfig'
 Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 " }}}
 
 lua << EOF
+-- Switch to utilizing special nvim path if it exists
+vim.env.PATH = vim.env.NVIM_PATH or vim.env.PATH
+
 local tkmap = require("keymappings").tkmap
 local nkmap = require("keymappings").nkmap
 local new_autocmd = require("myautocmd").new_autocmd
@@ -70,20 +73,14 @@ nkmap("ns", function()
   vim.opt.spell = false
 end)
 
--- vim-go settings
-vim.g.go_fmt_options = {
-   gopls= '-local selector,inventory,gopkg.in,google.golang.org,code.uber.internal,thriftrw,thrift,gogoproto,go.uber.org,golang.org,github.com,mock',
+-- lsp settings
+require('lspconfig').gopls.setup {
+  cmd = {'gopls', '-remote=auto'},
+  flags = {
+    -- Don't spam LSP with changes. Wait a second between each.
+    debounce_text_changes = 1000,
+  },
 }
-
-go_keymaps = function ()
-  nkmap("ts", function() vim.api.nvim_command("GoTest") end)
-  nkmap("at", function() vim.api.nvim_command("GoAlternate") end)
-end
-
-new_autocmd("Filetype", {
-  pattern = "go",
-  callback = go_keymaps,
-})
 
 -- Airline settings
 vim.g.airline_theme = 'deus'
