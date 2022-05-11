@@ -74,12 +74,32 @@ nkmap("ns", function()
 end)
 
 -- lsp settings
+local function autofmt()
+    vim.lsp.buf.formatting_sync(nil, 3000)
+end
+new_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = autofmt,
+})
+
+local lsp_on_attach = function(client, bufnr)
+  local opts = { noremap=true, silent=true }
+
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+end
+
+local lsp_flags = {
+  -- Don't spam LSP with changes. Wait a second between each.
+  debounce_text_changes = 1000,
+}
+
 require('lspconfig').gopls.setup {
   cmd = {'gopls', '-remote=auto'},
-  flags = {
-    -- Don't spam LSP with changes. Wait a second between each.
-    debounce_text_changes = 1000,
-  },
+  on_attach = lsp_on_attach,
+  flags = lsp_flags,
 }
 
 -- Airline settings
