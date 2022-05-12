@@ -83,12 +83,12 @@ new_autocmd("BufWritePre", {
 })
 
 local lsp_on_attach = function(client, bufnr)
-  local opts = { noremap=true, silent=true }
+  local opts = { noremap=true, silent=true, buffer=bufnr}
 
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+  vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 end
 
 local lsp_flags = {
