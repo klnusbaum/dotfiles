@@ -1,3 +1,4 @@
+vim.cmd [[
 " plugins {{{
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'neovim/nvim-lspconfig'
@@ -9,8 +10,8 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 " }}}
+]]
 
-lua << EOF
 -- Switch to utilizing special nvim path if it exists
 vim.env.PATH = vim.env.NVIM_PATH or vim.env.PATH
 
@@ -130,9 +131,9 @@ nkmap('ud', function()
   end)
 end)
 
-EOF
-
+vim.cmd [[
 " bazel auto format {{{
-autocmd BufWritePost *.star,*.bzl,*.bazel execute "! /Users/kurtis/go-code/bin/buildifier " . shellescape(expand('%p')) . " || read"  | redraw!
+auto BufWritePost *.star,*.bzl,*.bazel execute "! /Users/kurtis/go-code/bin/buildifier " . shellescape(expand('%p')) . " || read"  | redraw!
 autocmd BufWritePost *.star,*.bzl,*.bazel edit | redraw
 " }}}
+]]
