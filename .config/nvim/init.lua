@@ -125,7 +125,7 @@ new_autocmd("BufWritePost", {
   pattern = { "*.star", "*.bzl", "*.bazel" },
   callback = function()
       local cur_file = vim.api.nvim_buf_get_name(CURRENT_BUFFER_NUMBER)
-      vim.cmd("! buildifier " .. cur_file)
+      vim.fn.system("buildifier " .. cur_file)
       vim.cmd("edit")
   end,
 })
