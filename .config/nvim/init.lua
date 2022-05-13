@@ -1,4 +1,6 @@
 -- Switch to utilizing special nvim path if it exists
+local CURRENT_BUFFER_NUMBER = 0
+
 vim.env.PATH = vim.env.NVIM_PATH or vim.env.PATH
 
 require('kplugins')
@@ -118,9 +120,12 @@ nkmap('ud', function()
   end)
 end)
 
-vim.cmd [[
-" bazel auto format {{{
-auto BufWritePost *.star,*.bzl,*.bazel execute "! /Users/kurtis/go-code/bin/buildifier " . shellescape(expand('%p')) . " || read"  | redraw!
-autocmd BufWritePost *.star,*.bzl,*.bazel edit | redraw
-" }}}
-]]
+-- Bazel/Starlark
+new_autocmd("BufWritePost", {
+  pattern = { "*.star", "*.bzl", "*.bazel" },
+  callback = function()
+      local cur_file = vim.api.nvim_buf_get_name(CURRENT_BUFFER_NUMBER)
+      vim.cmd("! buildifier " .. cur_file)
+      vim.cmd("edit")
+  end,
+})
