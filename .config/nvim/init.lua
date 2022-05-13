@@ -1,20 +1,7 @@
-vim.cmd [[
-" plugins {{{
-call plug#begin('~/.local/share/nvim/plugged')
-Plug 'neovim/nvim-lspconfig'
-Plug 'kien/ctrlp.vim'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-call plug#end()
-" }}}
-]]
-
 -- Switch to utilizing special nvim path if it exists
 vim.env.PATH = vim.env.NVIM_PATH or vim.env.PATH
 
+require('kplugins')
 local tkmap = require("keymappings").tkmap
 local nkmap = require("keymappings").nkmap
 local new_autocmd = require("myautocmd").new_autocmd
