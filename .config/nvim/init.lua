@@ -1,12 +1,11 @@
 -- Switch to utilizing special nvim path if it exists
-local CURRENT_BUFFER_NUMBER = 0
-
 vim.env.PATH = vim.env.NVIM_PATH or vim.env.PATH
 
 require('kplugins')
 local tkmap = require("keymappings").tkmap
 local nkmap = require("keymappings").nkmap
 local new_autocmd = require("myautocmd").new_autocmd
+local cur_file = require("kfiles").cur_file
 
 -- Misc options settings
 vim.opt.nu=true
@@ -124,8 +123,7 @@ end)
 new_autocmd("BufWritePost", {
   pattern = { "*.star", "*.bzl", "*.bazel" },
   callback = function()
-      local cur_file = vim.api.nvim_buf_get_name(CURRENT_BUFFER_NUMBER)
-      vim.fn.system("buildifier " .. cur_file)
+      vim.fn.system("buildifier " .. cur_file())
       vim.cmd("edit")
   end,
 })
