@@ -10,6 +10,7 @@ local kn_map = require("keymappings").kn_map
 local kn_l_map = require("keymappings").kn_l_map
 local new_autocmd = require("myautocmd").create_personal_group().new_autocmd
 local cur_file = require("kfiles").cur_file
+local ext_opts = require("options").ext_opts
 
 -- Misc options settings
 vim.opt.nu=true
@@ -71,7 +72,7 @@ local function autofmt()
     vim.lsp.buf.formatting_sync(nil, 3000)
 end
 new_autocmd("BufWritePre", {
-  pattern = "*.go",
+  pattern = {'*.go', '.*lua'},
   callback = autofmt,
 })
 
@@ -89,11 +90,51 @@ local lsp_flags = {
   debounce_text_changes = 1000,
 }
 
-require('lspconfig').gopls.setup {
-  cmd = {'gopls', '-remote=auto'},
+local standard_lsp_config = {
   on_attach = lsp_on_attach,
   flags = lsp_flags,
 }
+
+local neovim_lua_lsp_runtime_path = vim.split(package.path, ';')
+table.insert(neovim_lua_lsp_runtime_path, "lua/?.lua")
+table.insert(neovim_lua_lsp_runtime_path, "lua/?/init.lua")
+
+local neovim_lua_lsp_settings = {
+  Lua = {
+    runtime = {
+      -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+      version = 'LuaJIT',
+      -- Setup your lua path
+      path = neovim_lua_lsp_runtime_path,
+    },
+    diagnostics = {
+      -- Get the language server to recognize the `vim` global
+      globals = {'vim'},
+    },
+    workspace = {
+      -- Make the server aware of Neovim runtime files
+      library = vim.api.nvim_get_runtime_file("", true),
+    },
+    -- Do not send telemetry data containing a randomized but unique identifier
+    telemetry = {
+      enable = false,
+    },
+  },
+}
+
+local language_servers = { 
+  gopls = { 
+    cmd = {'gopls', '-remote=auto'},
+  }, 
+  sumneko_lua = {
+    settings = neovim_lua_lsp_settings,
+  },
+}
+
+for lsp_name, opts in pairs(language_servers) do
+  local all_opts = ext_opts(standard_lsp_config, opts)
+  require('lspconfig')[lsp_name].setup(all_opts)
+end
 
 -- Airline settings
 vim.g.airline_theme = 'deus'
