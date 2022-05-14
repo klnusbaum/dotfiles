@@ -6,7 +6,7 @@ require('kplugins')
 
 -- helper functions
 local kt_map = require("keymappings").kt_map
-local kn_map = require("keymappings").kn_l_map
+local kn_map = require("keymappings").kn_map
 local kn_l_map = require("keymappings").kn_l_map
 local new_autocmd = require("myautocmd").create_personal_group().new_autocmd
 local cur_file = require("kfiles").cur_file
@@ -80,8 +80,8 @@ local lsp_on_attach = function(client, bufnr)
 
   vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
 
-  kn_map('n', 'gd', vim.lsp.buf.definition, opts)
-  kn_map('n', 'K', vim.lsp.buf.hover, opts)
+  kn_map('gd', vim.lsp.buf.definition, opts)
+  kn_map('K', vim.lsp.buf.hover, opts)
 end
 
 local lsp_flags = {
