@@ -1,10 +1,10 @@
 local M = {}
 
-function M.tkmap(shortcut, action)
+function M.kt_map(shortcut, action)
     vim.keymap.set('t', shortcut, action)
 end
 
-function M.nkmap(shortcut, action)
+function M.kn_map(shortcut, action, opts)
     vim.keymap.set('n', '<leader>' .. shortcut, action)
 end
 

@@ -5,8 +5,8 @@ vim.env.PATH = vim.env.NVIM_PATH or vim.env.PATH
 require('kplugins')
 
 -- helper functions
-local tkmap = require("keymappings").tkmap
-local nkmap = require("keymappings").nkmap
+local kt_map = require("keymappings").kt_map
+local kn_map = require("keymappings").kn_map
 local new_autocmd = require("myautocmd").create_personal_group().new_autocmd
 local cur_file = require("kfiles").cur_file
 
@@ -31,21 +31,21 @@ new_autocmd({"BufWinEnter","WinEnter"}, {
   command = "startinsert",
 })
 
-tkmap("<c-\\><c-w>","<c-\\><c-n><c-w><c-w>")
-tkmap("<c-\\><c-h>","<c-\\><c-n><c-w>h")
-tkmap("<c-\\><c-j>","<c-\\><c-n><c-w>j")
-tkmap("<c-\\><c-k>","<c-\\><c-n><c-w>k")
-tkmap("<c-\\><c-l>","<c-\\><c-n><c-w>l")
+kt_map("<c-\\><c-w>","<c-\\><c-n><c-w><c-w>")
+kt_map("<c-\\><c-h>","<c-\\><c-n><c-w>h")
+kt_map("<c-\\><c-j>","<c-\\><c-n><c-w>j")
+kt_map("<c-\\><c-k>","<c-\\><c-n><c-w>k")
+kt_map("<c-\\><c-l>","<c-\\><c-n><c-w>l")
 
-nkmap("ot", function()
+kn_map("ot", function()
   vim.api.nvim_command("vsplit | term")
 end)
 
 -- vim config editing convenience
-nkmap("ev", function ()
+kn_map("ev", function ()
   vim.api.nvim_command("vsplit $MYVIMRC")
 end)
-nkmap("sv", function ()
+kn_map("sv", function ()
   vim.api.nvim_command("source $MYVIMRC")
   vim.notify('Reloaded $MYVIMRC')
 end)
@@ -53,15 +53,15 @@ end)
 -- Netrw settings
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 1
-nkmap("u", function()
+kn_map("u", function()
   vim.api.nvim_command('Vexplore')
 end)
 
 -- spelling shortcuts
-nkmap("ss", function()
+kn_map("ss", function()
   vim.opt.spell = true
 end)
-nkmap("ns", function()
+kn_map("ns", function()
   vim.opt.spell = false
 end)
 
@@ -98,12 +98,12 @@ require('lspconfig').gopls.setup {
 vim.g.airline_theme = 'deus'
 
 -- Fugitive (git) customizations
-nkmap('ggu', function() 
+kn_map('ggu', function() 
   vim.api.nvim_command("Git add --update") 
   vim.notify('git added all updated files')
 end)
-nkmap('gga', function() vim.api.nvim_command("Git commit --amend --no-edit") end)
-nkmap('ggc', function()
+kn_map('gga', function() vim.api.nvim_command("Git commit --amend --no-edit") end)
+kn_map('ggc', function()
   vim.ui.input({ prompt = 'Commit message: '}, function(input)
     if input then
       vim.api.nvim_command('Git commit -m "' .. input .. '"')
@@ -114,8 +114,8 @@ nkmap('ggc', function()
 end)
 
 -- Arc customizations
-nkmap("ad", function() vim.api.nvim_command("vsplit term://ad") end)
-nkmap('ud', function()
+kn_map("ad", function() vim.api.nvim_command("vsplit term://ad") end)
+kn_map('ud', function()
   vim.ui.input({ prompt = 'Diff message: '}, function(input)
     vim.api.nvim_command('vs | term arc diff HEAD^ -m "' .. input .. '"')
   end)
@@ -132,6 +132,6 @@ new_autocmd("BufWritePost", {
 
 -- Telescope
 local tele = require('telescope.builtin')
-nkmap('tf', function() tele.find_files() end)
-nkmap('th', function() tele.help_tags() end)
-nkmap('tg', function() tele.live_grep() end)
+kn_map('tf', function() tele.find_files() end)
+kn_map('th', function() tele.help_tags() end)
+kn_map('tg', function() tele.live_grep() end)
