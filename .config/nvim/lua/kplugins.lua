@@ -5,6 +5,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 return require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
   use 'neovim/nvim-lspconfig'
   use 'kien/ctrlp.vim'
   use 'tpope/vim-commentary'
@@ -12,6 +13,10 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'vim-airline/vim-airline'
   use 'vim-airline/vim-airline-themes'
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
