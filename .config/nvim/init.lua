@@ -23,7 +23,7 @@ vim.opt.clipboard="unnamed"
 vim.opt.splitbelow=true
 vim.opt.splitright=true
 
--- terminal customizations 
+-- terminal customizations
 new_autocmd("TermOpen", {
   pattern = "*",
   command = "setlocal nonumber",
@@ -76,7 +76,7 @@ new_autocmd("BufWritePre", {
   callback = autofmt,
 })
 
-local lsp_on_attach = function(client, bufnr)
+local lsp_on_attach = function(_, bufnr)
   local opts = { noremap=true, silent=true, buffer=bufnr}
 
   vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
@@ -122,10 +122,10 @@ local neovim_lua_lsp_settings = {
   },
 }
 
-local language_servers = { 
-  gopls = { 
+local language_servers = {
+  gopls = {
     cmd = {'gopls', '-remote=auto'},
-  }, 
+  },
   sumneko_lua = {
     settings = neovim_lua_lsp_settings,
   },
@@ -140,8 +140,8 @@ end
 vim.g.airline_theme = 'deus'
 
 -- Fugitive (git) customizations
-kn_l_map('ggu', function() 
-  vim.api.nvim_command("Git add --update") 
+kn_l_map('ggu', function()
+  vim.api.nvim_command("Git add --update")
   vim.notify('git added all updated files')
 end)
 kn_l_map('gga', function() vim.api.nvim_command("Git commit --amend --no-edit") end)
@@ -149,7 +149,7 @@ kn_l_map('ggc', function()
   vim.ui.input({ prompt = 'Commit message: '}, function(input)
     if input then
       vim.api.nvim_command('Git commit -m "' .. input .. '"')
-    else 
+    else
       vim.notify("Commit aborted")
     end
   end)
