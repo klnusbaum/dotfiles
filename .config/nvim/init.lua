@@ -1,7 +1,10 @@
 -- Switch to utilizing special nvim path if it exists
 vim.env.PATH = vim.env.NVIM_PATH or vim.env.PATH
 
+-- load plugins
 require('kplugins')
+
+-- helper functions
 local tkmap = require("keymappings").tkmap
 local nkmap = require("keymappings").nkmap
 local new_autocmd = require("myautocmd").new_autocmd
