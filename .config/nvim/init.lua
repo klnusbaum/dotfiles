@@ -110,7 +110,11 @@ end)
 nkmap('gga', function() vim.api.nvim_command("Git commit --amend --no-edit") end)
 nkmap('ggc', function()
   vim.ui.input({ prompt = 'Commit message: '}, function(input)
-    vim.api.nvim_command('Git commit -m "' .. input .. '"')
+    if input then
+      vim.api.nvim_command('Git commit -m "' .. input .. '"')
+    else 
+      vim.notify("Commit aborted")
+    end
   end)
 end)
 
