@@ -127,3 +127,9 @@ new_autocmd("BufWritePost", {
       vim.cmd("edit")
   end,
 })
+
+-- Telescope
+local tele = require('telescope.builtin')
+nkmap('ff', function() tele.find_files() end)
+nkmap('fh', function() tele.help_tags() end)
+nkmap('fg', function() tele.live_grep() end)
