@@ -97,11 +97,6 @@ require('lspconfig').gopls.setup {
 -- Airline settings
 vim.g.airline_theme = 'deus'
 
--- ctrlp settings
-vim.g.ctrlp_user_command = 'rg %s --files --color=never --glob ""'
-vim.g.ctrlp_use_caching = 1
-vim.g.ctrlp_working_path_mode = 0
-
 -- Fugitive (git) customizations
 nkmap('ggu', function() 
   vim.api.nvim_command("Git add --update") 
