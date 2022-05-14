@@ -7,7 +7,7 @@ require('kplugins')
 -- helper functions
 local tkmap = require("keymappings").tkmap
 local nkmap = require("keymappings").nkmap
-local new_autocmd = require("myautocmd").new_autocmd
+local new_autocmd = require("myautocmd").create_personal_group().new_autocmd
 local cur_file = require("kfiles").cur_file
 
 -- Misc options settings
@@ -133,6 +133,6 @@ new_autocmd("BufWritePost", {
 
 -- Telescope
 local tele = require('telescope.builtin')
-nkmap('ff', function() tele.find_files() end)
-nkmap('fh', function() tele.help_tags() end)
-nkmap('fg', function() tele.live_grep() end)
+nkmap('tf', function() tele.find_files() end)
+nkmap('th', function() tele.help_tags() end)
+nkmap('tg', function() tele.live_grep() end)
