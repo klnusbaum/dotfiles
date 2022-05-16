@@ -164,13 +164,11 @@ kn_l_map('ud', function()
 end)
 
 -- Bazel/Starlark
-new_autocmd("BufWritePost", {
-  pattern = { "*.star", "*.bzl", "*.bazel" },
-  callback = function()
-      vim.fn.system("buildifier " .. cur_file())
-      vim.cmd("edit")
-  end,
+new_autocmd("BufWritePre", {
+   pattern = { "*.star", "*.bzl", "*.bazel" },
+   command = "%!buildifier",
 })
+
 
 -- Telescope
 local tele = require('telescope.builtin')
