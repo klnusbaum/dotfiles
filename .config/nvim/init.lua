@@ -11,6 +11,8 @@ local kn_l_map = require("keymappings").kn_l_map
 local new_autocmd = require("myautocmd").create_personal_group().new_autocmd
 local cur_file = require("kfiles").cur_file
 local ext_opts = require("options").ext_opts
+local current_buf_contents = require("kbufhelpers").current_buf_contents
+local set_current_buf_contents = require("kbufhelpers").set_current_buf_contents
 
 -- Misc options settings
 vim.opt.nu=true
@@ -166,7 +168,14 @@ end)
 -- Bazel/Starlark
 new_autocmd("BufWritePre", {
    pattern = { "*.star", "*.bzl", "*.bazel" },
-   command = "%!buildifier",
+   callback = function()
+     local result = vim.fn.system("buildifier", current_buf_contents())
+     if vim.v.shell_error == 0 then
+       set_current_buf_contents(result)
+     else
+       vim.notify(result)
+     end
+   end,
 })
 
 
