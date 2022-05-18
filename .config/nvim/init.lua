@@ -79,12 +79,13 @@ new_autocmd("BufWritePre", {
 })
 
 local lsp_on_attach = function(_, bufnr)
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
   local opts = { noremap=true, silent=true, buffer=bufnr}
-
-  vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
-
   kn_map('gd', vim.lsp.buf.definition, opts)
   kn_map('K', vim.lsp.buf.hover, opts)
+  kn_map('grr', vim.lsp.buf.rename, opts)
+  kn_map('grf', vim.lsp.buf.references, opts)
 end
 
 local lsp_flags = {
@@ -131,6 +132,7 @@ local language_servers = {
   sumneko_lua = {
     settings = neovim_lua_lsp_settings,
   },
+  pylsp = {},
 }
 
 for lsp_name, opts in pairs(language_servers) do

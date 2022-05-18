@@ -12,6 +12,7 @@ return require('packer').startup(function(use)
   use 'tpope/vim-surround'
   use 'vim-airline/vim-airline'
   use 'vim-airline/vim-airline-themes'
+  use 'nvim-lua/plenary.nvim'
   use 'rafcamlet/nvim-luapad'
   use {
     'nvim-telescope/telescope.nvim',
