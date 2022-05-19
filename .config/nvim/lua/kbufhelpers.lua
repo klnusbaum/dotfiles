@@ -7,7 +7,7 @@ local set_lines = vim.api.nvim_buf_set_lines
 
 local function split_to_table(contents)
   local result = {};
-  for line in string.gmatch(contents, "[^\n]+") do
+  for line in string.gmatch(contents, "(.-)\n") do
       table.insert(result, line);
   end
   return result;
