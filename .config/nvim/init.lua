@@ -9,7 +9,6 @@ local kt_map = require("keymappings").kt_map
 local kn_map = require("keymappings").kn_map
 local kn_l_map = require("keymappings").kn_l_map
 local new_autocmd = require("myautocmd").create_personal_group().new_autocmd
-local cur_file = require("kfiles").cur_file
 local ext_opts = require("options").ext_opts
 local current_buf_contents = require("kbufhelpers").current_buf_contents
 local set_current_buf_contents = require("kbufhelpers").set_current_buf_contents
