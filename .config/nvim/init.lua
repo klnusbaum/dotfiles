@@ -36,9 +36,7 @@ new_autocmd("TermOpen", {
 })
 new_autocmd({"BufWinEnter","WinEnter"}, {
   pattern = "term://*",
-  callback = function()
-     vim.cmd "startinsert"
-  end,
+  callback = function() vim.cmd "startinsert" end,
 })
 
 kt_map("<c-\\><c-w>","<c-\\><c-n><c-w><c-w>")
