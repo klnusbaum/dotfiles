@@ -28,11 +28,17 @@ vim.opt.splitright=true
 -- terminal customizations
 new_autocmd("TermOpen", {
   pattern = "*",
-  command = "setlocal nonumber",
+  callback = function()
+     vim.wo.number = false
+     vim.wo.relativenumber = false
+     vim.cmd "startinsert"
+  end,
 })
 new_autocmd({"BufWinEnter","WinEnter"}, {
   pattern = "term://*",
-  command = "startinsert",
+  callback = function()
+     vim.cmd "startinsert"
+  end,
 })
 
 kt_map("<c-\\><c-w>","<c-\\><c-n><c-w><c-w>")
