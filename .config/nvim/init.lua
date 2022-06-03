@@ -15,6 +15,7 @@ local set_current_buf_contents = require("kbufhelpers").set_current_buf_contents
 
 -- Misc options settings
 vim.opt.nu=true
+vim.opt.rnu=true
 vim.opt.mouse=a
 vim.opt.tabstop=2
 vim.opt.shiftwidth=2
