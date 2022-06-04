@@ -12,6 +12,8 @@ local new_autocmd = require("myautocmd").create_personal_group().new_autocmd
 local ext_opts = require("options").ext_opts
 local current_buf_contents = require("kbufhelpers").current_buf_contents
 local set_current_buf_contents = require("kbufhelpers").set_current_buf_contents
+local init_term_win = require('kterm').init_term_win
+local create_diff = require("phab").create_diff
 
 -- Misc options settings
 vim.opt.nu=true
@@ -28,11 +30,7 @@ vim.opt.splitright=true
 -- terminal customizations
 new_autocmd("TermOpen", {
   pattern = "*",
-  callback = function()
-     vim.wo.number = false
-     vim.wo.relativenumber = false
-     vim.cmd "startinsert"
-  end,
+  callback = init_term_win,
 })
 new_autocmd({"BufWinEnter","WinEnter"}, {
   pattern = "term://*",
@@ -164,7 +162,7 @@ kn_l_map('ggc', function()
 end)
 
 -- Arc customizations
-kn_l_map("ad", function() vim.api.nvim_command("vsplit term://ad") end)
+kn_l_map("ad", create_diff)
 kn_l_map('ud', function()
   vim.ui.input({ prompt = 'Diff message: '}, function(input)
     vim.api.nvim_command('vs | term arc diff HEAD^ -m "' .. input .. '"')
