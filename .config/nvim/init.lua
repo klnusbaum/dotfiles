@@ -32,7 +32,7 @@ new_autocmd("TermOpen", {
   pattern = "*",
   callback = init_term_win,
 })
-new_autocmd({"BufWinEnter","WinEnter"}, {
+new_autocmd("WinEnter", {
   pattern = "term://*",
   callback = function() vim.cmd "startinsert" end,
 })
