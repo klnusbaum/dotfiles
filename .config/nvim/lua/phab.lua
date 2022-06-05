@@ -3,7 +3,6 @@ local M = {}
 local uv = vim.loop
 local current_win = vim.api.nvim_get_current_win
 local create_autocmd = vim.api.nvim_create_autocmd
-local init_term_win = require('kterm').init_term_win
 
 local MSG_FILENAME_PREFIX = "diffmsg"
 local DIFF_TEMPLATE = [[
@@ -46,7 +45,6 @@ end
 
 local function submit_diff(diff_msg_file)
   vim.cmd("vsplit | term arc diff HEAD^ -F " .. diff_msg_file .. " && rm " .. diff_msg_file)
-  init_term_win()
 end
 
 function M.create_diff()
@@ -55,6 +53,7 @@ function M.create_diff()
   vim.cmd("vsplit " .. diff_msg_file)
   create_autocmd("WinClosed", {
     pattern = "" .. current_win(),
+    nested = true,
     callback = function()
       submit_diff(diff_msg_file)
     end,
