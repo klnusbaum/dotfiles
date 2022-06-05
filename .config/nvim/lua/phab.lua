@@ -1,9 +1,5 @@
 local M = {}
 
-local uv = vim.loop
-local current_win = vim.api.nvim_get_current_win
-local create_autocmd = vim.api.nvim_create_autocmd
-
 local MSG_FILENAME_PREFIX = "diffmsg"
 local DIFF_TEMPLATE = [[
 Summary: 
@@ -25,6 +21,11 @@ API Changes:
 Monitoring and Alerts: 
 ]]
 
+local current_win = vim.api.nvim_get_current_win
+local create_autocmd = vim.api.nvim_create_autocmd
+local current_buf_contents = require("kbufhelpers").current_buf_contents
+local set_current_buf_contents = require("kbufhelpers").set_current_buf_contents
+
 local function msg_file_path()
   local parent_commit = vim.fn.system 'git rev-parse HEAD^'
   return vim.env.TMPDIR .. MSG_FILENAME_PREFIX .. '_' .. parent_commit:gsub("%s+$", "")
@@ -35,22 +36,17 @@ local function default_msg_file_content()
   return commit_msg .. '\n\n' .. DIFF_TEMPLATE
 end
 
-local function ensure_diff_msg_file(fname)
-  if uv.fs_stat(fname) == nil then
-    local fd = uv.fs_open(fname,"w", 438)
-    uv.fs_write(fd, default_msg_file_content())
-    uv.fs_close(fd)
-  end
-end
-
 local function submit_diff(diff_msg_file)
-  vim.cmd("vsplit | term arc diff HEAD^ -F " .. diff_msg_file .. " && rm " .. diff_msg_file)
+  vim.cmd("vsplit | term echo diffing... && arc diff HEAD^ -F " .. diff_msg_file .. " && rm " .. diff_msg_file)
 end
 
 function M.create_diff()
   local diff_msg_file =  msg_file_path()
-  ensure_diff_msg_file(diff_msg_file)
   vim.cmd("vsplit " .. diff_msg_file)
+  if current_buf_contents() == "" then
+    set_current_buf_contents(default_msg_file_content())
+  end
+
   create_autocmd("WinClosed", {
     pattern = "" .. current_win(),
     nested = true,
