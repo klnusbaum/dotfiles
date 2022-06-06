@@ -13,8 +13,8 @@ function Augroup:new(name)
 end
 
 function Augroup:add_cmd(events, opts)
-    local all_opts = ext_opts({ group = self.id }, opts)
-    vim.api.nvim_create_autocmd(events, all_opts)
+    opts.group = self.id
+    vim.api.nvim_create_autocmd(events, opts)
 end
 
 function Augroup:delete()
