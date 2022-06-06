@@ -1,3 +1,4 @@
+local Augroup = require('kautocmd').Augroup
 local M = {}
 
 local MSG_FILENAME_PREFIX = "diffmsg"
@@ -47,11 +48,13 @@ function M.create_diff()
     set_current_buf_contents(default_msg_file_content())
   end
 
-  create_autocmd("WinClosed", {
+  local diff_group = Augroup:new("diffgroup")
+  diff_group:add_cmd("WinClosed", {
     pattern = "" .. current_win(),
     nested = true,
     callback = function()
       submit_diff(diff_msg_file)
+      diff_group:delete()
     end,
   })
 end
