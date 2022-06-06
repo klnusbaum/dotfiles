@@ -8,11 +8,13 @@ require('kplugins')
 local kt_map = require("keymappings").kt_map
 local kn_map = require("keymappings").kn_map
 local kn_l_map = require("keymappings").kn_l_map
-local new_autocmd = require("myautocmd").create_personal_group().new_autocmd
+local Augroup = require("kautocmd").Augroup
 local ext_opts = require("options").ext_opts
 local current_buf_contents = require("kbufhelpers").current_buf_contents
 local set_current_buf_contents = require("kbufhelpers").set_current_buf_contents
 local create_diff = require("phab").create_diff
+
+local personal_group = Augroup:new("personal")
 
 -- Misc options settings
 vim.opt.nu=true
@@ -27,7 +29,7 @@ vim.opt.splitbelow=true
 vim.opt.splitright=true
 
 -- terminal customizations
-new_autocmd("TermOpen", {
+personal_group:add_cmd("TermOpen", {
   pattern = "*",
   callback = function()
      vim.wo.number = false
@@ -35,7 +37,7 @@ new_autocmd("TermOpen", {
      vim.cmd "startinsert"
    end,
 })
-new_autocmd("WinEnter", {
+personal_group:add_cmd("WinEnter", {
   pattern = "term://*",
   callback = function() vim.cmd "startinsert" end,
 })
@@ -78,7 +80,7 @@ end)
 local function autofmt()
     vim.lsp.buf.formatting_sync(nil, 3000)
 end
-new_autocmd("BufWritePre", {
+personal_group:add_cmd("BufWritePre", {
   pattern = {'*.go', '.*lua'},
   callback = autofmt,
 })
@@ -173,7 +175,7 @@ kn_l_map('ud', function()
 end)
 
 -- Bazel/Starlark
-new_autocmd("BufWritePre", {
+personal_group:add_cmd("BufWritePre", {
    pattern = { "*.star", "*.bzl", "*.bazel" },
    callback = function()
      local result = vim.fn.system("buildifier", current_buf_contents())
