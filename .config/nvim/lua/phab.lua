@@ -23,7 +23,8 @@ Monitoring and Alerts:
 ]]
 
 local current_win = vim.api.nvim_get_current_win
-local create_autocmd = vim.api.nvim_create_autocmd
+local current_buf = vim.api.nvim_get_current_buf
+local buf_delete = vim.api.nvim_buf_delete
 local current_buf_contents = require("kbufhelpers").current_buf_contents
 local set_current_buf_contents = require("kbufhelpers").set_current_buf_contents
 
@@ -49,12 +50,14 @@ function M.create_diff()
   end
 
   local diff_group = Augroup:new("diffgroup")
+  local diff_buf = current_buf()
   diff_group:add_cmd("WinClosed", {
     pattern = "" .. current_win(),
     nested = true,
     callback = function()
       submit_diff(diff_msg_file)
       diff_group:delete()
+      buf_delete(diff_buf, {})
     end,
   })
 end
