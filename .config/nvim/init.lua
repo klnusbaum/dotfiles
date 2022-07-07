@@ -28,6 +28,13 @@ vim.opt.clipboard="unnamed"
 vim.opt.splitbelow=true
 vim.opt.splitright=true
 
+personal_group:add_cmd("TextYankPost", {
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
+
 -- terminal customizations
 personal_group:add_cmd("TermOpen", {
   pattern = "*",
