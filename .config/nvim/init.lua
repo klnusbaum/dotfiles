@@ -176,6 +176,8 @@ end)
 -- Arc customizations
 kn_l_map("ad", create_diff)
 kn_l_map('ud', function()
+  vim.api.nvim_command("Git add --update")
+  vim.api.nvim_command("Git commit --amend --no-edit")
   vim.ui.input({ prompt = 'Diff message: '}, function(input)
     vim.api.nvim_command('vs | term arc diff HEAD^ -m "' .. input .. '"')
   end)
