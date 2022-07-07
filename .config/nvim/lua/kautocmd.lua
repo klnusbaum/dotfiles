@@ -1,7 +1,5 @@
 local M = {}
 
-local ext_opts = require('options').ext_opts
-
 local Augroup = {}
 Augroup.__index = Augroup
 
@@ -24,4 +22,3 @@ end
 M.Augroup = Augroup
 
 return M
-
