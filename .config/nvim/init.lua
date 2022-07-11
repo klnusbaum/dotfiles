@@ -1,10 +1,8 @@
 -- Switch to utilizing special nvim path if it exists
 vim.env.PATH = vim.env.NVIM_PATH or vim.env.PATH
 
--- load plugins
-require('kplugins')
-
 -- helper functions
+local fn = vim.fn
 local kt_map = require("keymappings").kt_map
 local kn_map = require("keymappings").kn_map
 local kn_l_map = require("keymappings").kn_l_map
@@ -15,6 +13,39 @@ local set_current_buf_contents = require("kbufhelpers").set_current_buf_contents
 local create_diff = require("phab").create_diff
 
 local personal_group = Augroup:new("personal")
+
+-- load plugins
+local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+end
+
+require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
+  use 'neovim/nvim-lspconfig'
+  use 'tpope/vim-commentary'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-surround'
+  use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
+  use 'nvim-lua/plenary.nvim'
+  use 'rafcamlet/nvim-luapad'
+  use 'L3MON4D3/LuaSnip'
+  use 'saadparwaiz1/cmp_luasnip'
+  use 'hrsh7th/nvim-cmp'
+  use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-buffer'
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end)
 
 -- Misc options settings
 vim.opt.nu=true
@@ -83,6 +114,28 @@ kn_l_map("ns", function()
   vim.opt.spell = false
 end)
 
+-- nvim-cmp
+local cmp = require('cmp')
+cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      end,
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'buffer' },
+    })
+})
+
 -- lsp settings
 local function autofmt()
     vim.lsp.buf.formatting_sync(nil, 3000)
@@ -107,9 +160,11 @@ local lsp_flags = {
   debounce_text_changes = 1000,
 }
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local standard_lsp_config = {
   on_attach = lsp_on_attach,
   flags = lsp_flags,
+  capabilities = capabilities,
 }
 
 local neovim_lua_lsp_runtime_path = vim.split(package.path, ';')
@@ -187,7 +242,7 @@ end)
 personal_group:add_cmd("BufWritePre", {
    pattern = { "*.star", "*.bzl", "*.bazel" },
    callback = function()
-     local result = vim.fn.system("buildifier", current_buf_contents())
+     local result = fn.system("buildifier", current_buf_contents())
      if vim.v.shell_error == 0 then
        set_current_buf_contents(result)
      else
@@ -197,8 +252,10 @@ personal_group:add_cmd("BufWritePre", {
 })
 
 
+
 -- Telescope
 local tele = require('telescope.builtin')
 kn_l_map('tf', function() tele.find_files() end)
 kn_l_map('th', function() tele.help_tags() end)
 kn_l_map('tg', function() tele.live_grep() end)
+kn_l_map('tb', function() tele.git_branches() end)
