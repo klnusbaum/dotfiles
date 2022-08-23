@@ -56,8 +56,8 @@ function M.create_diff()
     nested = true,
     callback = function()
       submit_diff(diff_msg_file)
-      diff_group:delete()
       buf_delete(diff_buf, {})
+      return true -- delete this autocmd once it's run since we don't need it anymore
     end,
   })
 end
