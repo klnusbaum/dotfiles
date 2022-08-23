@@ -22,6 +22,7 @@ end
 
 require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
+  use 'ojroques/vim-oscyank'
   use 'neovim/nvim-lspconfig'
   use 'tpope/vim-commentary'
   use 'tpope/vim-fugitive'
@@ -259,3 +260,11 @@ kn_l_map('tf', function() tele.find_files() end)
 kn_l_map('th', function() tele.help_tags() end)
 kn_l_map('tg', function() tele.live_grep() end)
 kn_l_map('tb', function() tele.git_branches() end)
+
+-- OSCYank
+personal_group:add_cmd("TextYankPost", {
+  pattern = "*",
+  callback = function(args)
+      vim.api.nvim_command('OSCYankReg "')
+  end,
+})
