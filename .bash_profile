@@ -58,20 +58,6 @@ webgodocs () {
   godoc -http=localhost:6060
 }
 
-
-land () { 
-  if [ "$#" -eq 0 ]; then
-    arc land 
-  elif [ $# -eq 1 ]; then
-    echo "Landing and rebasing"
-    arc land --keep-branch "$1" && git checkout master && git merge && git checkout - && git rebase master
-  elif [ "$1" == "-nr" ]; then
-    arc land --keep-branch "$2"
-  else
-    echo "Argument error"
-  fi  
-}
-
 grp() {
   git rev-parse "$1" | pbcopy
 }
