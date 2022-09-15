@@ -1,7 +1,7 @@
 -- Switch to utilizing special nvim path if it exists
 vim.env.PATH = vim.env.NVIM_PATH or vim.env.PATH
 
--- load plugins
+-- plugins
 require("plugins")
 
 -- helper functions
@@ -16,7 +16,6 @@ local set_current_buf_contents = require("kbufhelpers").set_current_buf_contents
 local create_diff = require("phab").create_diff
 
 local personal_group = Augroup:new("personal")
-
 
 -- Misc options settings
 vim.opt.nu=true
@@ -50,6 +49,15 @@ personal_group:add_cmd("TermOpen", {
 personal_group:add_cmd("WinEnter", {
   pattern = "term://*",
   callback = function() vim.cmd "startinsert" end,
+})
+
+-- recompile packer plugins whenever I change them so that all I have to do is run PackerSync
+personal_group:add_cmd("BufWritePost",{
+    pattern = "plugins.lua",
+    callback = function(opts)
+        vim.cmd("source " .. opts.file .. " | PackerCompile")
+        vim.notify("ran source " .. opts.file .. " | PackerCompile")
+    end,
 })
 
 kt_map("<c-\\><c-w>","<c-\\><c-n><c-w><c-w>")
