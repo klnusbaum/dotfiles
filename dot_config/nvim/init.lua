@@ -83,7 +83,7 @@ end)
 -- Netrw settings
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 1
-kn_l_map("u", function()
+kn_l_map("f", function()
   vim.api.nvim_command('Vexplore')
 end)
 
