@@ -119,7 +119,7 @@ cmp.setup({
 
 -- lsp settings
 local function autofmt()
-    vim.lsp.buf.format({ timeout_ms = 3000 })
+    vim.lsp.buf.formatting_sync(nil, 3000)
 end
 personal_group:add_cmd("BufWritePre", {
   pattern = {'*.go', '.*lua'},
