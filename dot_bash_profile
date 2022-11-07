@@ -77,12 +77,6 @@ gt () {
   go test -v -race -run "$1"
 }
 
-if [ -x "$(command -v rustc)" ]; then
-  export PATH="$HOME/.cargo/bin:$PATH"
-  rust_src_lib=$(rustc --print sysroot)/lib/rustlib/src/rust/src
-  export RUST_SRC_PATH=$rust_src_lib
-fi
-
 clearbak() {
   find . -name "*.bak" -delete
 }
@@ -100,3 +94,4 @@ if [ -f '/Users/kurtis/google-cloud-sdk/path.bash.inc' ]; then . '/Users/kurtis/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/kurtis/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/kurtis/google-cloud-sdk/completion.bash.inc'; fi
+[ -r  "$HOME/.cargo/env" ] && . "$HOME/.cargo/env"
