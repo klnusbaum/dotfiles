@@ -16,6 +16,5 @@ if [ -f "$HOME/kopt/work/config/zsh_additions.inc" ]; then
   source $HOME/kopt/work/config/zsh_additions.inc
 fi
 
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(direnv hook zsh)"
