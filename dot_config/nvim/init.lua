@@ -17,6 +17,14 @@ local create_diff = require("phab").create_diff
 
 local personal_group = Augroup:new("personal")
 
+-- Color scheme
+-- vim.cmd.colorscheme "shades_of_purple"
+vim.cmd.colorscheme "tokyonight-night"
+-- vim.cmd.colorscheme "catppuccin-mocha"
+
+-- LuaLine
+require('lualine').setup()
+
 -- Misc options settings
 vim.opt.nu=true
 vim.opt.rnu=true
@@ -25,12 +33,20 @@ vim.opt.tabstop=4
 vim.opt.shiftwidth=4
 vim.opt.expandtab=true
 vim.opt.smartindent=true
-vim.opt.clipboard="unnamed"
+vim.opt.clipboard="unnamedplus"
 vim.opt.splitbelow=true
 vim.opt.splitright=true
 vim.g.mapleader=" "
 vim.g.oscyank_term='default' -- needed for playing nicely with tmux
 
+-- Neovide settings
+if vim.g.neovide
+then
+    vim.g.neovide_fullscreen=true
+    vim.g.neovide_hide_mouse_when_typing=true
+end
+
+-- Copy/Paste settings
 personal_group:add_cmd("TextYankPost", {
   pattern = "*",
   callback = function()
@@ -141,7 +157,7 @@ local lsp_flags = {
   debounce_text_changes = 1000,
 }
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local standard_lsp_config = {
   on_attach = lsp_on_attach,
   flags = lsp_flags,
@@ -189,9 +205,6 @@ for lsp_name, opts in pairs(language_servers) do
   local all_opts = ext_opts(standard_lsp_config, opts)
   require('lspconfig')[lsp_name].setup(all_opts)
 end
-
--- Airline settings
-vim.g.airline_theme = 'deus'
 
 -- Fugitive (git) customizations
 kn_l_map('ggu', function()
@@ -244,9 +257,12 @@ kn_l_map('tb', function() tele.git_branches() end)
 kn_l_map('tp', function() tele.resume() end)
 
 -- OSCYank
-personal_group:add_cmd("TextYankPost", {
-  pattern = "*",
-  callback = function(args)
-      vim.api.nvim_command('OSCYankReg "')
-  end,
-})
+if not vim.g.neovide
+then
+    personal_group:add_cmd("TextYankPost", {
+      pattern = "*",
+      callback = function(args)
+          vim.api.nvim_command('OSCYankReg "')
+      end,
+    })
+end
