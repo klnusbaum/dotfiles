@@ -1,4 +1,4 @@
-PROMPT='%D{%F %T %Z} %1d # '
+PROMPT='%D{%F %T %Z} %1d@%M # '
 
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -17,4 +17,8 @@ if [ -f "$HOME/kopt/work/config/zsh_additions.inc" ]; then
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(direnv hook zsh)"
+
+if  command -v direnv
+then
+    eval "$(direnv hook zsh)"
+fi
