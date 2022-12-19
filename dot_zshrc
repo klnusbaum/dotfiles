@@ -8,8 +8,15 @@ setopt appendhistory
 autoload -Uz compinit && compinit
 export PATH=$HOME/bin:$HOME/kopt/bin:$HOME/kopt/work/bin:$HOME/google-cloud-sdk/bin:$PATH
 export EDITOR=nvim
+
+# Go settings
 export GOPATH=$HOME/sandbox/go-code
 export PATH=$PATH:$GOPATH/bin
+
+# Rust settings
+export CARGO_HOME=$HOME/.cache/cargo
+export RUSTUP_HOME=/usr/local/rustup
+export PATH=$PATH:/usr/local/cargo/bin
 bindkey -e
 
 if [ -f "$HOME/kopt/work/config/zsh_additions.inc" ]; then
