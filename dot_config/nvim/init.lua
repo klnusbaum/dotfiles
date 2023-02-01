@@ -139,7 +139,7 @@ local function autofmt()
     vim.lsp.buf.formatting_sync(nil, 3000)
 end
 personal_group:add_cmd("BufWritePre", {
-  pattern = {'*.go', '.*lua'},
+  pattern = {'*.rs', '*.go', '.*lua'},
   callback = autofmt,
 })
 
@@ -201,6 +201,8 @@ local language_servers = {
     settings = neovim_lua_lsp_settings,
   },
   pylsp = {},
+  dockerls = {},
+  rust_analyzer = {},
 }
 
 for lsp_name, opts in pairs(language_servers) do
