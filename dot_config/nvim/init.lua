@@ -69,15 +69,6 @@ personal_group:add_cmd("WinEnter", {
   callback = function() vim.cmd "startinsert" end,
 })
 
--- recompile packer plugins whenever I change them so that all I have to do is run PackerSync
-personal_group:add_cmd("BufWritePost",{
-    pattern = "plugins.lua",
-    callback = function(opts)
-        vim.cmd("source " .. opts.file .. " | PackerCompile")
-        vim.notify("ran source " .. opts.file .. " | PackerCompile")
-    end,
-})
-
 kt_map("<c-\\><c-w>","<c-\\><c-n><c-w><c-w>")
 kt_map("<c-\\><c-h>","<c-\\><c-n><c-w>h")
 kt_map("<c-\\><c-j>","<c-\\><c-n><c-w>j")
