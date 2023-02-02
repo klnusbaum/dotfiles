@@ -18,8 +18,8 @@ local create_diff = require("phab").create_diff
 local personal_group = Augroup:new("personal")
 
 -- Color scheme
-vim.cmd.colorscheme "shades_of_purple"
--- vim.cmd.colorscheme "tokyonight-night"
+-- vim.cmd.colorscheme "shades_of_purple"
+vim.cmd.colorscheme "tokyonight-moon"
 -- vim.cmd.colorscheme "catppuccin-mocha"
 
 -- LuaLine
