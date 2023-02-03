@@ -1,9 +1,6 @@
 -- Switch to utilizing special nvim path if it exists
 vim.env.PATH = vim.env.NVIM_PATH or vim.env.PATH
 
--- plugins
-require("plugins")
-
 -- helper functions
 local fn = vim.fn
 local kt_map = require("keymappings").kt_map
@@ -16,14 +13,6 @@ local set_current_buf_contents = require("kbufhelpers").set_current_buf_contents
 local create_diff = require("phab").create_diff
 
 local personal_group = Augroup:new("personal")
-
--- Color scheme
--- vim.cmd.colorscheme "shades_of_purple"
-vim.cmd.colorscheme "tokyonight-moon"
--- vim.cmd.colorscheme "catppuccin-mocha"
-
--- LuaLine
-require('lualine').setup()
 
 -- Misc options settings
 vim.opt.nu=true
@@ -39,6 +28,9 @@ vim.opt.splitbelow=true
 vim.opt.splitright=true
 vim.g.mapleader=" "
 vim.g.oscyank_term='default' -- needed for playing nicely with tmux
+
+require('lazy-init')
+require('lualine').setup()
 
 -- Neovide settings
 if vim.g.neovide
