@@ -1,6 +1,3 @@
--- Switch to utilizing special nvim path if it exists
-vim.env.PATH = vim.env.NVIM_PATH or vim.env.PATH
-
 -- helper functions
 local fn = vim.fn
 local kt_map = require("keymappings").kt_map
