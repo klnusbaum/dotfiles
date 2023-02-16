@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-sort | uniq -c | sort -r
+sort | uniq -c | sort -rn
