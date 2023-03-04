@@ -149,17 +149,11 @@ local standard_lsp_config = {
   capabilities = capabilities,
 }
 
-local neovim_lua_lsp_runtime_path = vim.split(package.path, ';')
-table.insert(neovim_lua_lsp_runtime_path, "lua/?.lua")
-table.insert(neovim_lua_lsp_runtime_path, "lua/?/init.lua")
-
-local neovim_lua_lsp_settings = {
+local lua_lsp_settings = {
   Lua = {
     runtime = {
       -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
       version = 'LuaJIT',
-      -- Setup your lua path
-      path = neovim_lua_lsp_runtime_path,
     },
     diagnostics = {
       -- Get the language server to recognize the `vim` global
@@ -181,8 +175,8 @@ local language_servers = {
   gopls = {
     cmd = {'gopls', '-remote=auto'},
   },
-  sumneko_lua = {
-    settings = neovim_lua_lsp_settings,
+  lua_ls = {
+    settings = lua_lsp_settings,
   },
   pylsp = {},
   dockerls = {},
