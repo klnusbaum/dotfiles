@@ -236,9 +236,3 @@ kn_l_map('th', function() tele.help_tags() end)
 kn_l_map('tg', function() tele.live_grep() end)
 kn_l_map('tb', function() tele.git_branches() end)
 kn_l_map('tp', function() tele.resume() end)
-
-
--- nvim-osc52
-local osc52 = require('osc52')
-kn_l_map('y', osc52.copy_operator, {expr = true})
-kv_l_map('y', osc52.copy_visual)
