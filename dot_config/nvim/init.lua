@@ -3,6 +3,7 @@ local fn = vim.fn
 local kt_map = require("keymappings").kt_map
 local kn_map = require("keymappings").kn_map
 local kn_l_map = require("keymappings").kn_l_map
+local kv_l_map = require("keymappings").kv_l_map
 local Augroup = require("kautocmd").Augroup
 local ext_opts = require("options").ext_opts
 local current_buf_contents = require("kbufhelpers").current_buf_contents
@@ -20,11 +21,9 @@ vim.opt.shiftwidth=4
 vim.opt.expandtab=true
 vim.opt.smartindent=true
 vim.opt.termguicolors=true
-vim.opt.clipboard="unnamedplus"
 vim.opt.splitbelow=true
 vim.opt.splitright=true
 vim.g.mapleader=" "
-vim.g.oscyank_term='default' -- needed for playing nicely with tmux
 
 require('lazy-init')
 require('lualine').setup()
@@ -238,13 +237,8 @@ kn_l_map('tg', function() tele.live_grep() end)
 kn_l_map('tb', function() tele.git_branches() end)
 kn_l_map('tp', function() tele.resume() end)
 
--- OSCYank
-if not vim.g.neovide
-then
-    personal_group:add_cmd("TextYankPost", {
-      pattern = "*",
-      callback = function(args)
-          vim.api.nvim_command('OSCYankReg "')
-      end,
-    })
-end
+
+-- nvim-osc52
+local osc52 = require('osc52')
+kn_l_map('y', osc52.copy_operator, {expr = true})
+kv_l_map('y', osc52.copy_visual)
