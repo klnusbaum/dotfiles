@@ -6,7 +6,7 @@ SAVEHIST=100000
 setopt appendhistory
 
 autoload -Uz compinit && compinit
-export PATH=$HOME/bin:$HOME/kopt/bin:$HOME/kopt/work/bin:$HOME/google-cloud-sdk/bin:$PATH
+export PATH=$HOME/bin:$HOME/kopt/bin:$HOME/kopt/work/bin:$HOME/google-cloud-sdk/bin:$HOME/.local/bin:$PATH
 export EDITOR=nvim
 
 # Go settings
