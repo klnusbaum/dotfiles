@@ -179,6 +179,7 @@ local language_servers = {
   pylsp = {},
   dockerls = {},
   rust_analyzer = {},
+  tsserver = {},
 }
 
 for lsp_name, opts in pairs(language_servers) do
