@@ -118,12 +118,11 @@ cmp.setup({
 })
 
 -- lsp settings
-local function autofmt()
-    vim.lsp.buf.formatting_sync(nil, 3000)
-end
 personal_group:add_cmd("BufWritePre", {
-  pattern = {'*.rs', '*.go', '.*lua'},
-  callback = autofmt,
+  pattern = {'*.rs', '*.go', '.*lua', '*.js'},
+  callback = function()
+    vim.lsp.buf.format()
+  end,
 })
 
 local lsp_on_attach = function(_, bufnr)
