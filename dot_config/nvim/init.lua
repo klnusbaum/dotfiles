@@ -120,7 +120,7 @@ cmp.setup({
 
 -- lsp settings
 personal_group:add_cmd("BufWritePre", {
-  pattern = {'*.rs', '*.go', '.*lua', '*.js'},
+  pattern = {'*.rs', '*.go', '.*lua', '*.js', '*.py'},
   callback = function()
     vim.lsp.buf.format()
   end,
