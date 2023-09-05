@@ -27,11 +27,11 @@ local current_buf = vim.api.nvim_get_current_buf
 local buf_delete = vim.api.nvim_buf_delete
 local current_buf_contents = require("kbufhelpers").current_buf_contents
 local set_current_buf_contents = require("kbufhelpers").set_current_buf_contents
-local TMPDIR = vim.env.TMPDIR or "/tmp/"
+local TMPDIR = vim.env.TMPDIR or "/tmp"
 
 local function msg_file_path()
   local parent_commit = vim.fn.system 'git rev-parse HEAD^'
-  return TMPDIR .. MSG_FILENAME_PREFIX .. '_' .. parent_commit:gsub("%s+$", "")
+  return TMPDIR .. "/" .. MSG_FILENAME_PREFIX .. '_' .. parent_commit:gsub("%s+$", "")
 end
 
 local function default_msg_file_content()
