@@ -204,6 +204,7 @@ kn_l_map('ggc', function()
   end)
 end)
 kn_l_map('ggrc', function() vim.api.nvim_command("Git rebase --continue") end)
+kn_l_map('ggpu', 'Git push')
 
 -- Arc customizations
 kn_l_map("ad", create_diff)
