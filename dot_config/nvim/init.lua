@@ -181,6 +181,7 @@ local language_servers = {
   dockerls = {},
   rust_analyzer = {},
   tsserver = {},
+  bashls = {},
 }
 
 for lsp_name, opts in pairs(language_servers) do
@@ -204,7 +205,7 @@ kn_l_map('ggc', function()
   end)
 end)
 kn_l_map('ggrc', function() vim.api.nvim_command("Git rebase --continue") end)
-kn_l_map('ggpu', 'Git push')
+kn_l_map('ggpu', function() vim.api.nvim_command("Git push") end)
 
 -- Arc customizations
 kn_l_map("ad", create_diff)
