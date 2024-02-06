@@ -1,5 +1,6 @@
 local M = {}
 
+-- TODO should just use nvim_get_current_buffer instead
 local CURRENT_BUFFER = 0
 local ALL_LINES = -1
 local get_lines = vim.api.nvim_buf_get_lines
