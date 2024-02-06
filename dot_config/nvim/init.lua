@@ -65,15 +65,15 @@ kt_map("<c-\\><c-l>","<c-\\><c-n><c-w>l")
 kt_map("<c-\\><c-t>","<c-\\><c-n>gt")
 
 kn_l_map("ot", function()
-  vim.api.nvim_command("vsplit | term")
+  vim.cmd("vsplit | term")
 end)
 
 -- vim config editing convenience
 kn_l_map("ev", function ()
-  vim.api.nvim_command("vsplit $MYVIMRC")
+  vim.cmd("vsplit $MYVIMRC")
 end)
 kn_l_map("sv", function ()
-  vim.api.nvim_command("source $MYVIMRC")
+  vim.cmd("source $MYVIMRC")
   vim.notify('Reloaded $MYVIMRC')
 end)
 
@@ -81,7 +81,7 @@ end)
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 1
 kn_l_map("f", function()
-  vim.api.nvim_command('Vexplore')
+  vim.cmd('Vexplore')
 end)
 
 -- spelling shortcuts
@@ -191,30 +191,30 @@ end
 
 -- Fugitive (git) customizations
 kn_l_map('ggu', function()
-  vim.api.nvim_command("Git add --update")
+  vim.cmd("Git add --update")
   vim.notify('git added all updated files')
 end)
-kn_l_map('gga', function() vim.api.nvim_command("Git commit --amend --no-edit") end)
+kn_l_map('gga', function() vim.cmd("Git commit --amend --no-edit") end)
 kn_l_map('ggc', function()
   vim.ui.input({ prompt = 'Commit message: '}, function(input)
     if input then
-      vim.api.nvim_command('Git commit -m "' .. input .. '"')
+      vim.cmd('Git commit -m "' .. input .. '"')
     else
       vim.notify("Commit aborted")
     end
   end)
 end)
-kn_l_map('ggrc', function() vim.api.nvim_command("Git rebase --continue") end)
-kn_l_map('ggpu', function() vim.api.nvim_command("Git push") end)
+kn_l_map('ggrc', function() vim.cmd("Git rebase --continue") end)
+kn_l_map('ggpu', function() vim.cmd("Git push") end)
 kn_l_map('ggs', vim.cmd.Git)
 
 -- Arc customizations
 kn_l_map("ad", create_diff)
 kn_l_map('ud', function()
-  vim.api.nvim_command("Git add --update")
-  vim.api.nvim_command("Git commit --amend --no-edit")
+  vim.cmd("Git add --update")
+  vim.cmd("Git commit --amend --no-edit")
   vim.ui.input({ prompt = 'Diff message: '}, function(input)
-    vim.api.nvim_command('vs | term arc diff HEAD^ -m "' .. input .. '"')
+    vim.cmd('vs | term arc diff HEAD^ -m "' .. input .. '"')
   end)
 end)
 
