@@ -122,7 +122,7 @@ cmp.setup({
 
 -- lsp settings
 personal_group:add_cmd("BufWritePre", {
-  pattern = {'*.rs', '*.go', '.*lua', '*.js', '*.py'},
+  pattern = {'*.bzl', '*.bazel', '*.star', '*.rs', '*.go', '.*lua', '*.js', '*.py'},
   callback = function()
     vim.lsp.buf.format()
   end,
@@ -219,21 +219,6 @@ kn_l_map('ud', function()
     vim.cmd('vs | term arc diff HEAD^ -m "' .. input .. '"')
   end)
 end)
-
--- Bazel/Starlark
-personal_group:add_cmd("BufWritePre", {
-   pattern = { "*.star", "*.bzl", "*.bazel" },
-   callback = function()
-     local result = vim.fn.system("buildifier", current_buf_contents())
-     if vim.v.shell_error == 0 then
-       set_current_buf_contents(result)
-     else
-       vim.notify(result)
-     end
-   end,
-})
-
-
 
 -- Telescope
 local tele = require('telescope.builtin')
