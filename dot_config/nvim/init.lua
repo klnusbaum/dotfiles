@@ -1,5 +1,4 @@
 -- helper functions
-local fn = vim.fn
 local kt_map = require("keymappings").kt_map
 local kn_map = require("keymappings").kn_map
 local kn_l_map = require("keymappings").kn_l_map
@@ -226,7 +225,7 @@ end)
 personal_group:add_cmd("BufWritePre", {
    pattern = { "*.star", "*.bzl", "*.bazel" },
    callback = function()
-     local result = fn.system("buildifier", current_buf_contents())
+     local result = vim.fn.system("buildifier", current_buf_contents())
      if vim.v.shell_error == 0 then
        set_current_buf_contents(result)
      else
