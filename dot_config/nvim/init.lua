@@ -2,7 +2,6 @@
 local kt_map = require("keymappings").kt_map
 local kn_map = require("keymappings").kn_map
 local kn_l_map = require("keymappings").kn_l_map
-local kv_l_map = require("keymappings").kv_l_map
 local Augroup = require("kautocmd").Augroup
 local ext_opts = require("options").ext_opts
 local current_buf_contents = require("kbufhelpers").current_buf_contents
