@@ -171,9 +171,7 @@ local lua_lsp_settings = {
 }
 
 local language_servers = {
-    gopls = {
-        cmd = { 'gopls', '-remote=auto' },
-    },
+    gopls = {},
     lua_ls = {
         settings = lua_lsp_settings,
     },
