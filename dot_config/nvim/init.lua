@@ -126,19 +126,20 @@ personal_group:add_cmd("BufWritePre", {
     end,
 })
 
-local lsp_on_attach = function(_, bufnr)
-    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+vim.api.nvim_create_autocmd('LspAttach', {
+    desc = 'LSP actions',
+    callback = function(event)
+        local opts = { buffer = event.buf }
 
-    local opts = { noremap = true, silent = true, buffer = bufnr }
-    kn_map('gd', vim.lsp.buf.definition, opts)
-    kn_map('K', vim.lsp.buf.hover, opts)
-    kn_map('grr', vim.lsp.buf.rename, opts)
-    kn_map('grf', vim.lsp.buf.references, opts)
-end
+        kn_map('gd', vim.lsp.buf.definition, opts)
+        kn_map('K', vim.lsp.buf.hover, opts)
+        kn_map('grr', vim.lsp.buf.rename, opts)
+        kn_map('grf', vim.lsp.buf.references, opts)
+    end
+})
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local standard_lsp_config = {
-    on_attach = lsp_on_attach,
     capabilities = capabilities,
 }
 
