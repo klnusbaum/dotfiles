@@ -136,15 +136,9 @@ local lsp_on_attach = function(_, bufnr)
     kn_map('grf', vim.lsp.buf.references, opts)
 end
 
-local lsp_flags = {
-    -- Don't spam LSP with changes. Wait a second between each.
-    debounce_text_changes = 1000,
-}
-
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local standard_lsp_config = {
     on_attach = lsp_on_attach,
-    flags = lsp_flags,
     capabilities = capabilities,
 }
 
