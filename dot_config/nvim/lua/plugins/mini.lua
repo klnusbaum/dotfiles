@@ -4,6 +4,11 @@ return {
     'echasnovski/mini.nvim',
     version = false,
     config = function()
+        -- Starter
+        local starter = require("mini.starter")
+        starter.setup()
+
+        -- Sessions
         local sessions = require("mini.sessions")
         sessions.setup()
         kn_l_map('Sc', function()
