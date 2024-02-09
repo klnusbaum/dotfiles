@@ -4,8 +4,6 @@ local kn_map = require("keymappings").kn_map
 local kn_l_map = require("keymappings").kn_l_map
 local Augroup = require("kautocmd").Augroup
 local ext_opts = require("options").ext_opts
-local current_buf_contents = require("kbufhelpers").current_buf_contents
-local set_current_buf_contents = require("kbufhelpers").set_current_buf_contents
 local create_diff = require("phab").create_diff
 
 local personal_group = Augroup:new("personal")
