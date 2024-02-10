@@ -219,3 +219,9 @@ kn_l_map('tg', function() tele.live_grep() end)
 kn_l_map('tb', function() tele.git_branches() end)
 kn_l_map('tp', function() tele.resume() end)
 kn_l_map('te', function() tele.buffers() end)
+
+-- Language specific keymaps
+kn_l_map('cr', function()
+    vim.cmd.vsplit()
+    vim.cmd.term("cargo run")
+end)
