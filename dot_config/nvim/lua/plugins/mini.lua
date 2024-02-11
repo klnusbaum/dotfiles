@@ -24,5 +24,8 @@ return {
         kn_l_map('Sr', function() sessions.select('read', {}) end, { desc = 'Read session' })
         kn_l_map('Sw', function() sessions.select('write', {}) end, { desc = 'Write session' })
         kn_l_map('Sd', function() sessions.select('delete', {}) end, { desc = 'Delete session' })
+
+        -- Surround
+        require("mini.surround").setup()
     end
 }
