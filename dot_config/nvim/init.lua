@@ -138,49 +138,39 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local standard_lsp_config = {
-    capabilities = capabilities,
-}
-
-local lua_lsp_settings = {
-    Lua = {
-        runtime = {
-            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-            version = 'LuaJIT',
-        },
-        diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = { 'vim' },
-        },
-        workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
-            checkThirdParty = false, -- turn off to avoid third part check prompt
-        },
-        -- Do not send telemetry data containing a randomized but unique identifier
-        telemetry = {
-            enable = false,
+local default_capabilities = require("cmp_nvim_lsp").default_capabilities()
+local lspconfig = require("lspconfig")
+lspconfig["gopls"].setup({ capabilities = default_capabilities })
+lspconfig["pylsp"].setup({ capabilities = default_capabilities })
+lspconfig["dockerls"].setup({ capabilities = default_capabilities })
+lspconfig["rust_analyzer"].setup({ capabilities = default_capabilities })
+lspconfig["tsserver"].setup({ capabilities = default_capabilities })
+lspconfig["bashls"].setup({ capabilities = default_capabilities })
+lspconfig["lua_ls"].setup({
+    capabilities = default_capabilities,
+    settings = {
+        Lua = {
+            runtime = {
+                -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                version = 'LuaJIT',
+            },
+            diagnostics = {
+                -- Get the language server to recognize the `vim` global
+                globals = { 'vim' },
+            },
+            workspace = {
+                -- Make the server aware of Neovim runtime files
+                library = vim.api.nvim_get_runtime_file("", true),
+                checkThirdParty = false, -- turn off to avoid third part check prompt
+            },
+            -- Do not send telemetry data containing a randomized but unique identifier
+            telemetry = {
+                enable = false,
+            },
         },
     },
-}
+})
 
-local language_servers = {
-    gopls = {},
-    lua_ls = {
-        settings = lua_lsp_settings,
-    },
-    pylsp = {},
-    dockerls = {},
-    rust_analyzer = {},
-    tsserver = {},
-    bashls = {},
-}
-
-for lsp_name, opts in pairs(language_servers) do
-    local all_opts = ext_opts(standard_lsp_config, opts)
-    require('lspconfig')[lsp_name].setup(all_opts)
-end
 
 -- Fugitive (git) customizations
 kn_l_map('ggu', function()
