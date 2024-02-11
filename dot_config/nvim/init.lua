@@ -3,7 +3,6 @@ local kt_map = require("keymappings").kt_map
 local kn_map = require("keymappings").kn_map
 local kn_l_map = require("keymappings").kn_l_map
 local Augroup = require("kautocmd").Augroup
-local ext_opts = require("options").ext_opts
 local create_diff = require("phab").create_diff
 
 local personal_group = Augroup:new("personal")
@@ -179,6 +178,7 @@ kn_l_map('tg', function() tele.live_grep() end)
 kn_l_map('tb', function() tele.git_branches() end)
 kn_l_map('tp', function() tele.resume() end)
 kn_l_map('te', function() tele.buffers() end)
+kn_l_map('ts', function() tele.grep_string() end)
 
 -- Language specific keymaps
 kn_l_map('cr', function()
