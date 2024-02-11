@@ -1,8 +1,8 @@
 -- helper functions
-local Augroup = require("kautocmd").Augroup
-local create_diff = require("phab").create_diff
+local Augroup = require('kautocmd').Augroup
+local create_diff = require('phab').create_diff
 
-local personal_group = Augroup:new("personal")
+local personal_group = Augroup:new('personal')
 
 -- Misc options settings
 vim.opt.nu = true
@@ -28,28 +28,28 @@ then
 end
 
 -- Copy/Paste settings
-personal_group:add_cmd("TextYankPost", {
-    pattern = "*",
+personal_group:add_cmd('TextYankPost', {
+    pattern = '*',
     callback = function()
         vim.highlight.on_yank()
     end,
 })
 
 -- terminal customizations
-personal_group:add_cmd("TermOpen", {
-    pattern = "*",
+personal_group:add_cmd('TermOpen', {
+    pattern = '*',
     callback = function()
         vim.wo.number = false
         vim.wo.relativenumber = false
-        vim.cmd "startinsert"
+        vim.cmd 'startinsert'
     end,
 })
-personal_group:add_cmd("WinEnter", {
-    pattern = "term://*",
-    callback = function() vim.cmd "startinsert" end,
+personal_group:add_cmd('WinEnter', {
+    pattern = 'term://*',
+    callback = function() vim.cmd 'startinsert' end,
 })
 
-vim.keymap.set('n', "<leader>sr", function()
+vim.keymap.set('n', '<leader>sr', function()
     vim.ui.input({
         prompt = 'Run shell command: ',
     }, function(command)
@@ -60,43 +60,43 @@ vim.keymap.set('n', "<leader>sr", function()
     end, { desc = 'Run shell command' })
 end)
 
-vim.keymap.set('t', "<c-\\><c-w>", "<c-\\><c-n><c-w><c-w>")
-vim.keymap.set('t', "<c-\\><c-h>", "<c-\\><c-n><c-w>h")
-vim.keymap.set('t', "<c-\\><c-j>", "<c-\\><c-n><c-w>j")
-vim.keymap.set('t', "<c-\\><c-k>", "<c-\\><c-n><c-w>k")
-vim.keymap.set('t', "<c-\\><c-l>", "<c-\\><c-n><c-w>l")
-vim.keymap.set('t', "<c-\\><c-t>", "<c-\\><c-n>gt")
+vim.keymap.set('t', '<c-\\><c-w>', '<c-\\><c-n><c-w><c-w>')
+vim.keymap.set('t', '<c-\\><c-h>', '<c-\\><c-n><c-w>h')
+vim.keymap.set('t', '<c-\\><c-j>', '<c-\\><c-n><c-w>j')
+vim.keymap.set('t', '<c-\\><c-k>', '<c-\\><c-n><c-w>k')
+vim.keymap.set('t', '<c-\\><c-l>', '<c-\\><c-n><c-w>l')
+vim.keymap.set('t', '<c-\\><c-t>', '<c-\\><c-n>gt')
 
-vim.keymap.set('n', "<leader>ot", function()
-    vim.cmd("vsplit | term")
+vim.keymap.set('n', '<leader>ot', function()
+    vim.cmd('vsplit | term')
 end)
 
 -- vim config editing convenience
-vim.keymap.set('n', "<leader>ev", function()
-    vim.cmd("vsplit $MYVIMRC")
+vim.keymap.set('n', '<leader>ev', function()
+    vim.cmd('vsplit $MYVIMRC')
 end)
-vim.keymap.set('n', "<leader>sv", function()
-    vim.cmd("source $MYVIMRC")
+vim.keymap.set('n', '<leader>sv', function()
+    vim.cmd('source $MYVIMRC')
     vim.notify('Reloaded $MYVIMRC')
 end)
 
 -- Netrw settings
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 1
-vim.keymap.set('n', "<leader>f", function()
+vim.keymap.set('n', '<leader>f', function()
     vim.cmd('Vexplore')
 end)
 
 -- spelling shortcuts
-vim.keymap.set('n', "<leader>ss", function()
+vim.keymap.set('n', '<leader>ss', function()
     vim.opt.spell = true
 end)
-vim.keymap.set('n', "<leader>ns", function()
+vim.keymap.set('n', '<leader>ns', function()
     vim.opt.spell = false
 end)
 
 -- lsp settings
-personal_group:add_cmd("BufWritePre", {
+personal_group:add_cmd('BufWritePre', {
     pattern = { '*.bzl', '*.bazel', '*.star', '*.rs', '*.go', '*.lua', '*.js', '*.py' },
     callback = function()
         vim.lsp.buf.format()
@@ -115,15 +115,15 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 })
 
-local default_capabilities = require("cmp_nvim_lsp").default_capabilities()
-local lspconfig = require("lspconfig")
-lspconfig["gopls"].setup({ capabilities = default_capabilities })
-lspconfig["pylsp"].setup({ capabilities = default_capabilities })
-lspconfig["dockerls"].setup({ capabilities = default_capabilities })
-lspconfig["rust_analyzer"].setup({ capabilities = default_capabilities })
-lspconfig["tsserver"].setup({ capabilities = default_capabilities })
-lspconfig["bashls"].setup({ capabilities = default_capabilities })
-lspconfig["lua_ls"].setup({
+local default_capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lspconfig = require('lspconfig')
+lspconfig['gopls'].setup({ capabilities = default_capabilities })
+lspconfig['pylsp'].setup({ capabilities = default_capabilities })
+lspconfig['dockerls'].setup({ capabilities = default_capabilities })
+lspconfig['rust_analyzer'].setup({ capabilities = default_capabilities })
+lspconfig['tsserver'].setup({ capabilities = default_capabilities })
+lspconfig['bashls'].setup({ capabilities = default_capabilities })
+lspconfig['lua_ls'].setup({
     capabilities = default_capabilities,
     settings = {
         Lua = {
@@ -137,7 +137,7 @@ lspconfig["lua_ls"].setup({
             },
             workspace = {
                 -- Make the server aware of Neovim runtime files
-                library = vim.api.nvim_get_runtime_file("", true),
+                library = vim.api.nvim_get_runtime_file('', true),
                 checkThirdParty = false, -- turn off to avoid third part check prompt
             },
             -- Do not send telemetry data containing a randomized but unique identifier
@@ -149,10 +149,10 @@ lspconfig["lua_ls"].setup({
 })
 
 -- Arc customizations
-vim.keymap.set('n', "<leader>ad", create_diff)
+vim.keymap.set('n', '<leader>ad', create_diff)
 vim.keymap.set('n', '<leader>ud', function()
-    vim.cmd("Git add --update")
-    vim.cmd("Git commit --amend --no-edit")
+    vim.cmd('Git add --update')
+    vim.cmd('Git commit --amend --no-edit')
     vim.ui.input({ prompt = 'Diff message: ' }, function(input)
         vim.cmd('vs | term arc diff HEAD^ -m "' .. input .. '"')
     end)
@@ -171,5 +171,5 @@ vim.keymap.set('n', '<leader>ts', function() tele.grep_string() end)
 -- Language specific keymaps
 vim.keymap.set('n', '<leader>cr', function()
     vim.cmd.vsplit()
-    vim.cmd.term("cargo run")
+    vim.cmd.term('cargo run')
 end)
