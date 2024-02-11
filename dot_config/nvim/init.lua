@@ -1,5 +1,4 @@
 -- helper functions
-local kt_map = require("keymappings").kt_map
 local kn_map = require("keymappings").kn_map
 local kn_l_map = require("keymappings").kn_l_map
 local Augroup = require("kautocmd").Augroup
@@ -52,12 +51,12 @@ personal_group:add_cmd("WinEnter", {
     callback = function() vim.cmd "startinsert" end,
 })
 
-kt_map("<c-\\><c-w>", "<c-\\><c-n><c-w><c-w>")
-kt_map("<c-\\><c-h>", "<c-\\><c-n><c-w>h")
-kt_map("<c-\\><c-j>", "<c-\\><c-n><c-w>j")
-kt_map("<c-\\><c-k>", "<c-\\><c-n><c-w>k")
-kt_map("<c-\\><c-l>", "<c-\\><c-n><c-w>l")
-kt_map("<c-\\><c-t>", "<c-\\><c-n>gt")
+vim.keymap.set('t', "<c-\\><c-w>", "<c-\\><c-n><c-w><c-w>")
+vim.keymap.set('t', "<c-\\><c-h>", "<c-\\><c-n><c-w>h")
+vim.keymap.set('t', "<c-\\><c-j>", "<c-\\><c-n><c-w>j")
+vim.keymap.set('t', "<c-\\><c-k>", "<c-\\><c-n><c-w>k")
+vim.keymap.set('t', "<c-\\><c-l>", "<c-\\><c-n><c-w>l")
+vim.keymap.set('t', "<c-\\><c-t>", "<c-\\><c-n>gt")
 
 kn_l_map("ot", function()
     vim.cmd("vsplit | term")
