@@ -15,7 +15,7 @@ vim.opt.smartindent = true
 vim.opt.termguicolors = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
-vim.g.mapleader = " "
+vim.g.mapleader = ' '
 
 require('lazy-init')
 require('lualine').setup()
@@ -41,23 +41,26 @@ personal_group:add_cmd('TermOpen', {
     callback = function()
         vim.wo.number = false
         vim.wo.relativenumber = false
-        vim.cmd 'startinsert'
+        vim.cmd.startinsert()
     end,
 })
 personal_group:add_cmd('WinEnter', {
     pattern = 'term://*',
-    callback = function() vim.cmd 'startinsert' end,
+    callback = function() vim.cmd.startinsert() end,
 })
 
 vim.keymap.set('n', '<leader>sr', function()
     vim.ui.input({
         prompt = 'Run shell command: ',
+        completion = 'command',
     }, function(command)
-        if command ~= nil then
+        if command ~= nil and command ~= "" then
             vim.cmd.split()
             vim.cmd.term(command)
+        else
+            vim.notify("command aborted")
         end
-    end, { desc = 'Run shell command' })
+    end)
 end)
 
 vim.keymap.set('t', '<c-\\><c-w>', '<c-\\><c-n><c-w><c-w>')
@@ -68,24 +71,23 @@ vim.keymap.set('t', '<c-\\><c-l>', '<c-\\><c-n><c-w>l')
 vim.keymap.set('t', '<c-\\><c-t>', '<c-\\><c-n>gt')
 
 vim.keymap.set('n', '<leader>ot', function()
-    vim.cmd('vsplit | term')
+    vim.cmd.vsplit()
+    vim.cmd.term()
 end)
 
 -- vim config editing convenience
 vim.keymap.set('n', '<leader>ev', function()
-    vim.cmd('vsplit $MYVIMRC')
+    vim.cmd.vsplit('$MYVIMRC')
 end)
 vim.keymap.set('n', '<leader>sv', function()
-    vim.cmd('source $MYVIMRC')
+    vim.cmd.source('$MYVIMRC')
     vim.notify('Reloaded $MYVIMRC')
 end)
 
 -- Netrw settings
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 1
-vim.keymap.set('n', '<leader>f', function()
-    vim.cmd('Vexplore')
-end)
+vim.keymap.set('n', '<leader>f', vim.cmd.Vexplore)
 
 -- spelling shortcuts
 vim.keymap.set('n', '<leader>ss', function()
