@@ -8,7 +8,7 @@ return {
         vim.keymap.set('n', '<leader>gga', function() vim.cmd("Git commit --amend --no-edit") end)
         vim.keymap.set('n', '<leader>ggc', function()
             vim.ui.input({ prompt = 'Commit message: ' }, function(input)
-                if input then
+                if input ~= nil and input ~= "" then
                     vim.cmd('Git commit -m "' .. input .. '"')
                 else
                     vim.notify("Commit aborted")
