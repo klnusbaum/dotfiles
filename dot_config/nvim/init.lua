@@ -49,6 +49,17 @@ personal_group:add_cmd("WinEnter", {
     callback = function() vim.cmd "startinsert" end,
 })
 
+vim.keymap.set('n', "<leader>sr", function()
+    vim.ui.input({
+        prompt = 'Run shell command: ',
+    }, function(command)
+        if command ~= nil then
+            vim.cmd.split()
+            vim.cmd.term(command)
+        end
+    end, { desc = 'Run shell command' })
+end)
+
 vim.keymap.set('t', "<c-\\><c-w>", "<c-\\><c-n><c-w><c-w>")
 vim.keymap.set('t', "<c-\\><c-h>", "<c-\\><c-n><c-w>h")
 vim.keymap.set('t', "<c-\\><c-j>", "<c-\\><c-n><c-w>j")
