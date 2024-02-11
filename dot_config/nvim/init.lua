@@ -1,6 +1,4 @@
 -- helper functions
-local kn_map = require("keymappings").kn_map
-local kn_l_map = require("keymappings").kn_l_map
 local Augroup = require("kautocmd").Augroup
 local create_diff = require("phab").create_diff
 
@@ -58,15 +56,15 @@ vim.keymap.set('t', "<c-\\><c-k>", "<c-\\><c-n><c-w>k")
 vim.keymap.set('t', "<c-\\><c-l>", "<c-\\><c-n><c-w>l")
 vim.keymap.set('t', "<c-\\><c-t>", "<c-\\><c-n>gt")
 
-kn_l_map("ot", function()
+vim.keymap.set('n', "<leader>ot", function()
     vim.cmd("vsplit | term")
 end)
 
 -- vim config editing convenience
-kn_l_map("ev", function()
+vim.keymap.set('n', "<leader>ev", function()
     vim.cmd("vsplit $MYVIMRC")
 end)
-kn_l_map("sv", function()
+vim.keymap.set('n', "<leader>sv", function()
     vim.cmd("source $MYVIMRC")
     vim.notify('Reloaded $MYVIMRC')
 end)
@@ -74,15 +72,15 @@ end)
 -- Netrw settings
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 1
-kn_l_map("f", function()
+vim.keymap.set('n', "<leader>f", function()
     vim.cmd('Vexplore')
 end)
 
 -- spelling shortcuts
-kn_l_map("ss", function()
+vim.keymap.set('n', "<leader>ss", function()
     vim.opt.spell = true
 end)
-kn_l_map("ns", function()
+vim.keymap.set('n', "<leader>ns", function()
     vim.opt.spell = false
 end)
 
@@ -99,10 +97,10 @@ vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(event)
         local opts = { buffer = event.buf }
 
-        kn_map('gd', vim.lsp.buf.definition, opts)
-        kn_map('K', vim.lsp.buf.hover, opts)
-        kn_map('grr', vim.lsp.buf.rename, opts)
-        kn_map('grf', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', 'grr', vim.lsp.buf.rename, opts)
+        vim.keymap.set('n', 'grf', vim.lsp.buf.references, opts)
     end
 })
 
@@ -141,12 +139,12 @@ lspconfig["lua_ls"].setup({
 
 
 -- Fugitive (git) customizations
-kn_l_map('ggu', function()
+vim.keymap.set('n', '<leader>ggu', function()
     vim.cmd("Git add --update")
     vim.notify('git added all updated files')
 end)
-kn_l_map('gga', function() vim.cmd("Git commit --amend --no-edit") end)
-kn_l_map('ggc', function()
+vim.keymap.set('n', '<leader>gga', function() vim.cmd("Git commit --amend --no-edit") end)
+vim.keymap.set('n', '<leader>ggc', function()
     vim.ui.input({ prompt = 'Commit message: ' }, function(input)
         if input then
             vim.cmd('Git commit -m "' .. input .. '"')
@@ -155,13 +153,13 @@ kn_l_map('ggc', function()
         end
     end)
 end)
-kn_l_map('ggrc', function() vim.cmd("Git rebase --continue") end)
-kn_l_map('ggpu', function() vim.cmd("Git push") end)
-kn_l_map('ggs', vim.cmd.Git)
+vim.keymap.set('n', '<leader>ggrc', function() vim.cmd("Git rebase --continue") end)
+vim.keymap.set('n', '<leader>ggpu', function() vim.cmd("Git push") end)
+vim.keymap.set('n', '<leader>ggs', vim.cmd.Git)
 
 -- Arc customizations
-kn_l_map("ad", create_diff)
-kn_l_map('ud', function()
+vim.keymap.set('n', "<leader>ad", create_diff)
+vim.keymap.set('n', '<leader>ud', function()
     vim.cmd("Git add --update")
     vim.cmd("Git commit --amend --no-edit")
     vim.ui.input({ prompt = 'Diff message: ' }, function(input)
@@ -171,16 +169,16 @@ end)
 
 -- Telescope
 local tele = require('telescope.builtin')
-kn_l_map('tf', function() tele.find_files() end)
-kn_l_map('th', function() tele.help_tags() end)
-kn_l_map('tg', function() tele.live_grep() end)
-kn_l_map('tb', function() tele.git_branches() end)
-kn_l_map('tp', function() tele.resume() end)
-kn_l_map('te', function() tele.buffers() end)
-kn_l_map('ts', function() tele.grep_string() end)
+vim.keymap.set('n', '<leader>tf', function() tele.find_files() end)
+vim.keymap.set('n', '<leader>th', function() tele.help_tags() end)
+vim.keymap.set('n', '<leader>tg', function() tele.live_grep() end)
+vim.keymap.set('n', '<leader>tb', function() tele.git_branches() end)
+vim.keymap.set('n', '<leader>tp', function() tele.resume() end)
+vim.keymap.set('n', '<leader>te', function() tele.buffers() end)
+vim.keymap.set('n', '<leader>ts', function() tele.grep_string() end)
 
 -- Language specific keymaps
-kn_l_map('cr', function()
+vim.keymap.set('n', '<leader>cr', function()
     vim.cmd.vsplit()
     vim.cmd.term("cargo run")
 end)

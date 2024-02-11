@@ -1,5 +1,3 @@
-local kn_l_map = require("keymappings").kn_l_map
-
 return {
     'echasnovski/mini.nvim',
     version = false,
@@ -11,7 +9,7 @@ return {
         -- Sessions
         local sessions = require("mini.sessions")
         sessions.setup()
-        kn_l_map('Sc', function()
+        vim.keymap.set('n', '<leader>Sc', function()
             vim.ui.input({
                 prompt = 'Create new session named: ',
                 default = vim.fs.basename(vim.fn.getcwd()),
@@ -21,9 +19,9 @@ return {
                 end
             end)
         end, { desc = 'Create new session' })
-        kn_l_map('Sr', function() sessions.select('read', {}) end, { desc = 'Read session' })
-        kn_l_map('Sw', function() sessions.select('write', {}) end, { desc = 'Write session' })
-        kn_l_map('Sd', function() sessions.select('delete', {}) end, { desc = 'Delete session' })
+        vim.keymap.set('n', '<leader>Sr', function() sessions.select('read', {}) end, { desc = 'Read session' })
+        vim.keymap.set('n', '<leader>Sw', function() sessions.select('write', {}) end, { desc = 'Write session' })
+        vim.keymap.set('n', '<leader>Sd', function() sessions.select('delete', {}) end, { desc = 'Delete session' })
 
         -- Surround
         require("mini.surround").setup()
