@@ -2,9 +2,11 @@ return {
     'echasnovski/mini.nvim',
     version = false,
     config = function()
+        -- Comment
+        require('mini.comment').setup()
+
         -- Starter
-        local starter = require("mini.starter")
-        starter.setup()
+        require("mini.starter").setup()
 
         -- Sessions
         local sessions = require("mini.sessions")
