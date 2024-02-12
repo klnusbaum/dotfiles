@@ -171,6 +171,7 @@ vim.keymap.set('n', '<leader>tb', tele.git_branches)
 vim.keymap.set('n', '<leader>tp', tele.resume)
 vim.keymap.set('n', '<leader>te', tele.buffers)
 vim.keymap.set('n', '<leader>ts', tele.grep_string)
+vim.keymap.set('n', '<leader>tt', tele.treesitter)
 
 -- Language specific keymaps
 vim.keymap.set('n', '<leader>cr', function()
