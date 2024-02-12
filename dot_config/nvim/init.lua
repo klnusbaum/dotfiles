@@ -164,13 +164,13 @@ end)
 
 -- Telescope
 local tele = require('telescope.builtin')
-vim.keymap.set('n', '<leader>tf', function() tele.find_files() end)
-vim.keymap.set('n', '<leader>th', function() tele.help_tags() end)
-vim.keymap.set('n', '<leader>tg', function() tele.live_grep() end)
-vim.keymap.set('n', '<leader>tb', function() tele.git_branches() end)
-vim.keymap.set('n', '<leader>tp', function() tele.resume() end)
-vim.keymap.set('n', '<leader>te', function() tele.buffers() end)
-vim.keymap.set('n', '<leader>ts', function() tele.grep_string() end)
+vim.keymap.set('n', '<leader>tf', tele.find_files)
+vim.keymap.set('n', '<leader>th', tele.help_tags)
+vim.keymap.set('n', '<leader>tg', tele.live_grep)
+vim.keymap.set('n', '<leader>tb', tele.git_branches)
+vim.keymap.set('n', '<leader>tp', tele.resume)
+vim.keymap.set('n', '<leader>te', tele.buffers)
+vim.keymap.set('n', '<leader>ts', tele.grep_string)
 
 -- Language specific keymaps
 vim.keymap.set('n', '<leader>cr', function()
