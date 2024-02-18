@@ -160,7 +160,7 @@ vim.keymap.set('n', '<leader>te', tele.buffers)
 vim.keymap.set('n', '<leader>ts', tele.grep_string)
 vim.keymap.set('n', '<leader>tt', tele.treesitter)
 
--- Language specific keymaps
+-- Random specific keymaps
 vim.keymap.set('n', '<leader>cb', function()
     vim.cmd.vsplit()
     vim.cmd.term('cargo build')
@@ -168,4 +168,9 @@ end)
 vim.keymap.set('n', '<leader>cr', function()
     vim.cmd.vsplit()
     vim.cmd.term('cargo run')
+end)
+vim.keymap.set('n', '<leader>ma', vim.cmd.make)
+vim.keymap.set('n', '<leader>ca', function()
+    vim.cmd.vsplit()
+    vim.cmd.term('chezmoi apply')
 end)
