@@ -5,6 +5,9 @@ return {
         trouble.setup(opts)
 
         vim.keymap.set('n', '<leader>xx', trouble.toggle, { desc = 'Trouble' })
+        vim.keymap.set('n', '<leader>xd', function()
+            trouble.toggle('document_diagnostics')
+        end, { desc = 'Document Diagnostics' })
         vim.keymap.set('n', '<leader>xw', function()
             trouble.toggle('workspace_diagnostics')
         end, { desc = 'Workspace Diagnostics' })
