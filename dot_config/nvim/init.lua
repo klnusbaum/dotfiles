@@ -87,7 +87,7 @@ end)
 
 -- lsp settings
 personal_group:add_cmd('BufWritePre', {
-    pattern = { '*.bzl', '*.bazel', '*.star', '*.rs', '*.go', '*.lua', '*.js', '*.py' },
+    pattern = { '*.bzl', '*.bazel', '*.star', '*.rs', '*.go', '*.lua', '*.js', '*.py', '*.sh' },
     callback = function()
         vim.lsp.buf.format()
     end,
