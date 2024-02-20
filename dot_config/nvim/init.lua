@@ -159,6 +159,7 @@ vim.keymap.set('n', '<leader>tp', tele.resume)
 vim.keymap.set('n', '<leader>te', tele.buffers)
 vim.keymap.set('n', '<leader>ts', tele.grep_string)
 vim.keymap.set('n', '<leader>tt', tele.treesitter)
+vim.keymap.set('n', '<leader>tc', tele.colorscheme)
 
 -- Random specific keymaps
 vim.keymap.set('n', '<leader>cb', function()
@@ -176,3 +177,6 @@ end)
 vim.keymap.set('n', '<leader>cmx', function()
     vim.cmd('!chmod u+x %')
 end)
+
+-- Set default colorscheme
+vim.cmd.colorscheme 'tokyonight-moon'
