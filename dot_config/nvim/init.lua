@@ -154,15 +154,17 @@ end)
 
 -- Telescope
 local tele = require('telescope.builtin')
+local teleext = require('telescope').extensions
 vim.keymap.set('n', '<leader>tf', tele.find_files)
 vim.keymap.set('n', '<leader>th', tele.help_tags)
 vim.keymap.set('n', '<leader>tg', tele.live_grep)
 vim.keymap.set('n', '<leader>tb', tele.git_branches)
 vim.keymap.set('n', '<leader>tp', tele.resume)
 vim.keymap.set('n', '<leader>te', tele.buffers)
-vim.keymap.set('n', '<leader>ts', tele.grep_string)
+vim.keymap.set('n', '<leader>tS', tele.grep_string)
 vim.keymap.set('n', '<leader>tt', tele.treesitter)
 vim.keymap.set('n', '<leader>tc', tele.colorscheme)
+vim.keymap.set('n', '<leader>ts', teleext.sessions_picker.sessions_picker)
 
 -- Random specific keymaps
 vim.keymap.set('n', '<leader>cb', function()
