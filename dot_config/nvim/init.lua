@@ -87,7 +87,7 @@ end)
 
 -- lsp settings
 personal_group:add_cmd('BufWritePre', {
-    pattern = { '*.bzl', '*.bazel', '*.star', '*.rs', '*.go', '*.lua', '*.js', '*.py', '*.sh' },
+    pattern = { '*.css', '*.json', '*.html', '*.bzl', '*.bazel', '*.star', '*.rs', '*.go', '*.lua', '*.js', '*.py', '*.sh' },
     callback = function()
         vim.lsp.buf.format()
     end,
@@ -114,6 +114,9 @@ lspconfig['dockerls'].setup({ capabilities = default_capabilities })
 lspconfig['rust_analyzer'].setup({ capabilities = default_capabilities })
 lspconfig['tsserver'].setup({ capabilities = default_capabilities })
 lspconfig['bashls'].setup({ capabilities = default_capabilities })
+lspconfig['cssls'].setup({ capabilities = default_capabilities })
+lspconfig['html'].setup({ capabilities = default_capabilities })
+lspconfig['jsonls'].setup({ capabilities = default_capabilities })
 lspconfig['lua_ls'].setup({
     capabilities = default_capabilities,
     settings = {
