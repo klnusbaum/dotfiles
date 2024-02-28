@@ -3,7 +3,6 @@ return {
     dependencies = {
         'nvim-lua/plenary.nvim',
         'nvim-telescope/telescope-ui-select.nvim',
-        'JoseConseco/telescope_sessions_picker.nvim',
     },
     config = function()
         local telescope = require('telescope')
@@ -16,6 +15,5 @@ return {
             },
         })
         telescope.load_extension('ui-select')
-        telescope.load_extension('sessions_picker')
     end
 }
