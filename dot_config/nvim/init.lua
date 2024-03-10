@@ -191,4 +191,4 @@ vim.keymap.set('n', '<leader>cmx', function()
 end)
 
 -- Set default colorscheme
-vim.cmd.colorscheme 'tokyonight-moon'
+vim.cmd.colorscheme 'kanagawa'
