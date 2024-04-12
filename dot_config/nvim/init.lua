@@ -87,18 +87,12 @@ vim.keymap.set('n', '<leader>ns', function()
 end)
 
 -- lsp settings
-personal_group:add_cmd('BufWritePre', {
-    pattern = { '*.css', '*.json', '*.html', '*.bzl', '*.bazel', '*.star', '*.rs', '*.go', '*.lua', '*.js', '*.py', '*.sh', '*.tsx', '*.ts' },
-    callback = function()
-        vim.lsp.buf.format()
-    end,
-})
-
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
     callback = function(event)
         local opts = { buffer = event.buf }
 
+        vim.keymap.set('n', 'gf', vim.lsp.buf.format, opts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', 'grr', vim.lsp.buf.rename, opts)
