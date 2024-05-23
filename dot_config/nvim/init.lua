@@ -36,6 +36,9 @@ personal_group:add_cmd('TextYankPost', {
     end,
 })
 
+vim.keymap.set('n', '<leader>y', '"+y')
+vim.keymap.set('v', '<leader>y', '"+y')
+
 -- terminal customizations
 personal_group:add_cmd('TermOpen', {
     pattern = '*',
