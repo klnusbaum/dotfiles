@@ -11,7 +11,6 @@ return {
             sources = {
                 null_ls.builtins.diagnostics.buildifier.with(buildifier_opts),
                 null_ls.builtins.formatting.buildifier.with(buildifier_opts),
-                null_ls.builtins.formatting.shfmt, -- needed until https://github.com/bash-lsp/bash-language-server/issues/320 is resolved
             },
         })
     end
