@@ -94,7 +94,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         vim.keymap.set('n', 'gf', vim.lsp.buf.format, opts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
         vim.keymap.set('n', 'grr', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', 'grf', vim.lsp.buf.references, opts)
         vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, opts)

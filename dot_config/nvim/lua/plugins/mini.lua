@@ -2,9 +2,6 @@ return {
     'echasnovski/mini.nvim',
     version = false,
     config = function()
-        -- Comment
-        require('mini.comment').setup()
-
         -- Starter
         require("mini.starter").setup()
 
