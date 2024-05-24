@@ -53,7 +53,7 @@ personal_group:add_cmd('WinEnter', {
     callback = function() vim.cmd.startinsert() end,
 })
 
-vim.keymap.set('n', '<leader>!', ":vs | term ")
+vim.keymap.set('n', '<leader>!', ":vert term ")
 
 vim.keymap.set('t', '<c-\\><c-w>', '<c-\\><c-n><c-w><c-w>')
 vim.keymap.set('t', '<c-\\><c-h>', '<c-\\><c-n><c-w>h')
