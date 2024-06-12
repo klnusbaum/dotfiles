@@ -24,3 +24,8 @@
     decorate = true
 [advice]
     skippedCherryPicks = false
+[user]
+    email = kcommiter@gmail.com
+    name = Kurtis Nusbaum
+[includeIf "gitdir:~/work/"]
+    path = ~/kopt/work/config/gitconfig
