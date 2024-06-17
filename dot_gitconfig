@@ -29,3 +29,7 @@
     name = Kurtis Nusbaum
 [includeIf "gitdir:~/work/"]
     path = ~/kopt/work/config/gitconfig
+[url "git@github.com:"]
+	insteadOf = https://github.com
+[core]
+	hooksPath = /home/kurtis/.config/git/hooks
