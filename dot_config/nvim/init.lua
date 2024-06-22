@@ -182,3 +182,10 @@ end)
 
 -- Set default colorscheme
 vim.cmd.colorscheme 'kanagawa'
+
+-- Optionally include additional, work-specific config
+local work_vim_dir = vim.fs.joinpath(vim.env.HOME, "kopt", "work", "nvim")
+if vim.fn.finddir(work_vim_dir) then
+    vim.opt.runtimepath:append(work_vim_dir)
+    require('work')
+end
