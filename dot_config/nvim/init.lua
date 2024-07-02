@@ -107,7 +107,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.api.nvim_create_autocmd("BufWritePre", {
             buffer = args.buf,
             callback = function()
-                local ft = vim.bo[args.buf].filetype
+                local ft = vim.bo.filetype
                 if no_autofmt[ft] == nil then
                     vim.lsp.buf.format { async = false, id = args.data.client_id }
                 end
