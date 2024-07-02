@@ -91,16 +91,28 @@ end)
 
 -- lsp settings
 vim.lsp.inlay_hint.enable(true)
+local no_autofmt = { json = true }
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
-    callback = function(event)
-        local opts = { buffer = event.buf }
+    callback = function(args)
+        local opts = { buffer = args.buf }
 
         vim.keymap.set('n', 'gf', vim.lsp.buf.format, opts)
         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
         vim.keymap.set('n', 'grr', vim.lsp.buf.rename, opts)
         vim.keymap.set('n', 'grf', vim.lsp.buf.references, opts)
         vim.keymap.set('n', '<F4>', vim.lsp.buf.code_action, opts)
+
+
+        vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = args.buf,
+            callback = function()
+                local ft = vim.bo[args.buf].filetype
+                if no_autofmt[ft] == nil then
+                    vim.lsp.buf.format { async = false, id = args.data.client_id }
+                end
+            end,
+        })
     end
 })
 
