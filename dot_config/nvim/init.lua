@@ -91,6 +91,15 @@ end)
 
 -- lsp settings
 vim.lsp.inlay_hint.enable(true)
+
+vim.keymap.set('n', ']x', function()
+    vim.diagnostic.goto_next()
+end, { desc = "Next diagnostic" })
+
+vim.keymap.set('n', '[x', function()
+    vim.diagnostic.goto_prev()
+end, { desc = "Previous diagnostic" })
+
 local no_autofmt = { json = true }
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
