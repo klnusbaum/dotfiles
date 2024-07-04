@@ -10,7 +10,7 @@ return {
                 'vimdoc', 'javascript', 'typescript', 'c', 'lua', 'rust',
                 'jsdoc', 'bash', 'go', 'cmake', 'cpp', 'css',
                 'html', 'latex', 'make', 'proto', 'python', 'sql',
-                'toml', 'yaml', 'markdown',
+                'toml', 'yaml', 'markdown', 'starlark',
             },
             auto_install = true,
             highlight = {
