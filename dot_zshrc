@@ -9,6 +9,9 @@ autoload -Uz compinit && compinit
 export PATH=$HOME/bin:$HOME/kopt/bin:$HOME/kopt/work/bin:$HOME/.local/bin:$PATH
 export EDITOR=nvim
 
+# Homebrew path setup
+export PATH=/opt/homebrew/bin:$PATH
+
 # Go settings
 export GOPATH=$HOME/sandbox/go-code
 export PATH=$PATH:$GOPATH/bin
