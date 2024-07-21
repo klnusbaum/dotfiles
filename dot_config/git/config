@@ -31,3 +31,5 @@
     path = ~/kopt/work/config/gitconfig
 [url "git@github.com:"]
 	insteadOf = https://github.com
+[init]
+	defaultBranch = main
