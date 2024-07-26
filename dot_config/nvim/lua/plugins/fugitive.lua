@@ -13,6 +13,6 @@ return {
         vim.keymap.set('n', '<leader>gF', function() vim.cmd("Git fetch") end)
         vim.keymap.set('n', '<leader>gS', function() vim.cmd("Git stash") end)
         vim.keymap.set('n', '<leader>gd', function() vim.cmd("Git diff") end)
-
+        vim.keymap.set('n', '<leader>gc', function() vim.cmd("Git commit") end)
     end
 }
