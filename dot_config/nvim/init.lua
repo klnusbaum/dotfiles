@@ -137,6 +137,8 @@ lspconfig['cssls'].setup({ capabilities = default_capabilities })
 lspconfig['html'].setup({ capabilities = default_capabilities })
 lspconfig['jsonls'].setup({ capabilities = default_capabilities })
 lspconfig['tailwindcss'].setup({ capabilities = default_capabilities })
+lspconfig['terraformls'].setup({ capabilities = default_capabilities })
+lspconfig['yamlls'].setup({ capabilities = default_capabilities })
 lspconfig['lua_ls'].setup({
     capabilities = default_capabilities,
     settings = {
