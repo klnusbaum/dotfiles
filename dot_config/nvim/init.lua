@@ -66,7 +66,7 @@ vim.keymap.set('n', '<leader>ot', function()
     vim.cmd.vsplit()
     vim.cmd.term()
 end)
-vim.keymap.set('n', '<leader>od', ':vsplit term://%:p:h//bash<CR>')
+vim.keymap.set('n', '<leader>od', ':vsplit term://%:p:h//zsh<CR>')
 
 -- vim config editing convenience
 vim.keymap.set('n', '<leader>ev', function()
