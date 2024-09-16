@@ -80,7 +80,6 @@ end)
 -- Netrw settings
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 1
-vim.keymap.set('n', '<leader>f', vim.cmd.Vexplore)
 
 -- spelling shortcuts
 vim.keymap.set('n', '<leader>ss', function()
