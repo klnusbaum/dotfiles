@@ -1,0 +1,3 @@
+return {
+    "xero/evangelion.nvim",
+}
