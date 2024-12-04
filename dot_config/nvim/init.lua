@@ -47,6 +47,7 @@ personal_group:add_cmd('TermOpen', {
         vim.wo.number = false
         vim.wo.relativenumber = false
         vim.cmd.startinsert()
+        vim.opt.spell = false
     end,
 })
 personal_group:add_cmd('WinEnter', {
