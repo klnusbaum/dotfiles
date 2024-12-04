@@ -15,6 +15,7 @@ vim.opt.smartindent = true
 vim.opt.termguicolors = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+vim.opt.spell = true
 vim.g.mapleader = ' '
 
 require('lazy-init')
