@@ -85,10 +85,7 @@ vim.g.netrw_banner = 1
 
 -- spelling shortcuts
 vim.keymap.set('n', '<leader>ss', function()
-    vim.opt.spell = true
-end)
-vim.keymap.set('n', '<leader>ns', function()
-    vim.opt.spell = false
+    vim.opt.spell = not vim.opt.spell:get()
 end)
 
 -- lsp settings
