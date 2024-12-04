@@ -6,5 +6,5 @@ then
 fi
 echo "#!/usr/bin/env bash" >> "$FIX_FILE"
 echo "" >> "$FIX_FILE"
-echo "set -ex" >> "$FIX_FILE"
+echo "set -exuo pipefail" >> "$FIX_FILE"
 chmod u+x "$FIX_FILE"
