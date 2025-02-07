@@ -83,11 +83,6 @@ end)
 vim.g.netrw_liststyle = 3
 vim.g.netrw_banner = 1
 
--- spelling shortcuts
-vim.keymap.set('n', '<leader>ss', function()
-    vim.opt.spell = not vim.opt.spell:get()
-end)
-
 -- lsp settings
 vim.lsp.inlay_hint.enable(true)
 
