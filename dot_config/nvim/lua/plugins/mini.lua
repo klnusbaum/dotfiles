@@ -19,9 +19,6 @@ return {
             end)
         end, { desc = 'Create new session' })
 
-        -- Surround
-        require("mini.surround").setup()
-
         -- Files
         local mini_files = require('mini.files')
         mini_files.setup()
