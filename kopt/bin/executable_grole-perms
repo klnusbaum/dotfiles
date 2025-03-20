@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+gcloud iam roles describe "$1"
