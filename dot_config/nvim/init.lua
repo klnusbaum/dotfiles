@@ -98,7 +98,7 @@ local no_autofmt = { json = true }
 local autofmt_status = {
     enabled = true
 }
-vim.keymap.set('n', 'a', function()
+vim.keymap.set('n', '<leader>a', function()
     autofmt_status.enabled = not autofmt_status.enabled
     vim.notify("Autoformat: " .. (autofmt_status.enabled and "enabled" or "disabled"))
 end, { desc = "toggle autoformat" })
