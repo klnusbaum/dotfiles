@@ -95,6 +95,14 @@ vim.keymap.set('n', '[x', function()
 end, { desc = "Previous diagnostic" })
 
 local no_autofmt = { json = true }
+local autofmt_status = {
+    enabled = true
+}
+vim.keymap.set('n', 'a', function()
+    autofmt_status.enabled = not autofmt_status.enabled
+    vim.notify("Autoformat: " .. (autofmt_status.enabled and "enabled" or "disabled"))
+end, { desc = "toggle autoformat" })
+
 vim.api.nvim_create_autocmd('LspAttach', {
     desc = 'LSP actions',
     callback = function(args)
@@ -111,7 +119,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
             buffer = args.buf,
             callback = function()
                 local ft = vim.bo.filetype
-                if no_autofmt[ft] == nil then
+                if no_autofmt[ft] == nil and autofmt_status.enabled then
                     vim.lsp.buf.format { async = false, id = args.data.client_id }
                 end
             end,
