@@ -87,11 +87,11 @@ vim.g.netrw_banner = 1
 vim.lsp.inlay_hint.enable(true)
 
 vim.keymap.set('n', ']x', function()
-    vim.diagnostic.goto_next()
+    vim.diagnostic.jump({ count = 1, float = true })
 end, { desc = "Next diagnostic" })
 
 vim.keymap.set('n', '[x', function()
-    vim.diagnostic.goto_prev()
+    vim.diagnostic.jump({ count = -1, float = true })
 end, { desc = "Previous diagnostic" })
 
 local no_autofmt = { json = true }
