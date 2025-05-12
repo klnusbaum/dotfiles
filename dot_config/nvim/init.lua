@@ -39,6 +39,17 @@ personal_group:add_cmd('TextYankPost', {
 
 vim.keymap.set('n', '<leader>y', '"+y')
 vim.keymap.set('v', '<leader>y', '"+y')
+vim.keymap.set('n', '<leader>lg', function()
+    local full_filepath = vim.fn.expand('%:p')
+    local git_root = vim.fs.root(full_filepath, '.git')
+    if git_root == nil or git_root == '' then
+        vim.notify("Not in git repository (no .git directory found)", vim.log.levels.WARN)
+        return
+    end
+    local relative_path = vim.fs.relpath(git_root, full_filepath)
+    vim.fn.setreg('+', relative_path)
+    vim.notify("Copied relative path: " .. relative_path, vim.log.levels.INFO)
+end)
 
 -- terminal customizations
 personal_group:add_cmd('TermOpen', {
