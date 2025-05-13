@@ -33,3 +33,7 @@
 	insteadOf = https://github.com
 [init]
 	defaultBranch = main
+[core]
+	hooksPath = ~/.config/git/hooks
+[spice "branchCreate"]
+	commit = false
