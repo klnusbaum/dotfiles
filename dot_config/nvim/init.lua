@@ -215,6 +215,9 @@ end)
 vim.keymap.set('n', '<leader>cmx', function()
     vim.cmd('!chmod u+x %')
 end)
+vim.keymap.set('n', '<leader>hr', function()
+    vim.opt.cmdheight = 1
+end)
 
 -- Set default colorscheme
 vim.cmd.colorscheme 'kanagawa'
