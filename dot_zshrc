@@ -36,6 +36,7 @@ then
 fi
 
 alias tf='terraform'
+alias kc='kubectl'
 alias groot='cd `git rev-parse --show-toplevel`'
 
 # The next line updates PATH for the Google Cloud SDK.
