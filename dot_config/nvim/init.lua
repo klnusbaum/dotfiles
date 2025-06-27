@@ -208,17 +208,20 @@ vim.keymap.set('n', '<leader>td', function()
 end)
 
 -- Random specific keymaps
-vim.keymap.set('n', '<leader>ma', vim.cmd.make)
+vim.keymap.set('n', '<leader>ma', vim.cmd.make, { desc = 'run make' })
 vim.keymap.set('n', '<leader>ca', function()
-    vim.cmd.vsplit()
-    vim.cmd('term chezmoi apply')
-end)
+        vim.cmd.vsplit()
+        vim.cmd('term chezmoi apply')
+    end,
+    { desc = 'apply chezmoi dotfiles' })
 vim.keymap.set('n', '<leader>cmx', function()
-    vim.cmd('!chmod u+x %')
-end)
+        vim.cmd('!chmod u+x %')
+    end,
+    { desc = 'make file in current buffer executable' })
 vim.keymap.set('n', '<leader>hr', function()
-    vim.opt.cmdheight = 1
-end)
+        vim.opt.cmdheight = 1
+    end,
+    { desc = 'reset command line height' })
 
 -- Set default colorscheme
 vim.cmd.colorscheme 'kanagawa'
