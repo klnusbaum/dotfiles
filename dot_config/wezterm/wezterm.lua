@@ -12,4 +12,13 @@ config.window_padding = {
   bottom = 0,
 }
 
+-- Key bindings for multi-line input
+config.keys = {
+  {
+    key = 'Enter',
+    mods = 'SHIFT',
+    action = wezterm.action.SendString '\n',
+  },
+}
+
 return config
