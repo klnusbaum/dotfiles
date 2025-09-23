@@ -16,6 +16,7 @@ return {
 
         vim.keymap.set('n', '<leader>fd', function()
             api.tree.find_file()
+            api.tree.focus()
         end)
         vim.keymap.set('n', '<leader>ft', function()
             api.tree.toggle()
