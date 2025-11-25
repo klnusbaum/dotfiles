@@ -32,7 +32,9 @@ fi
 
 if command -v gs &> /dev/null
 then
-    eval "$(gs shell completion zsh)"
+    if [[ "$(gs --help | head -1)" != *"Ghostscript"* ]]; then
+        eval "$(gs shell completion zsh)"
+    fi
 fi
 
 alias tf='terraform'
