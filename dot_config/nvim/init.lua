@@ -46,9 +46,11 @@ vim.keymap.set('n', '<leader>lg', function()
         vim.notify("Not in git repository (no .git directory found)", vim.log.levels.WARN)
         return
     end
+    local line_num = vim.fn.line(".")
     local relative_path = vim.fs.relpath(git_root, full_filepath)
-    vim.fn.setreg('+', relative_path)
-    vim.notify("Copied relative path: " .. relative_path, vim.log.levels.INFO)
+    local link = relative_path .. "#" .. line_num
+    vim.fn.setreg('+', link)
+    vim.notify("Copied relative path: " .. link, vim.log.levels.INFO)
 end)
 
 -- terminal customizations
