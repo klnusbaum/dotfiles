@@ -48,7 +48,7 @@ vim.keymap.set('n', '<leader>lg', function()
     end
     local line_num = vim.fn.line(".")
     local relative_path = vim.fs.relpath(git_root, full_filepath)
-    local link = relative_path .. "#" .. line_num
+    local link = relative_path .. "#L" .. line_num
     vim.fn.setreg('+', link)
     vim.notify("Copied relative path: " .. link, vim.log.levels.INFO)
 end)
