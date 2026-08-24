@@ -37,6 +37,7 @@ then
     fi
 fi
 
+alias gs="git-spice"
 alias tf='terraform'
 alias kc='kubectl'
 alias groot='pushd `git rev-parse --show-toplevel`'
