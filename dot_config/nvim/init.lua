@@ -7,7 +7,6 @@ local personal_group = Augroup:new('personal')
 -- Misc options settings
 vim.opt.nu = true
 vim.opt.rnu = true
-vim.opt.mouse = a
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
