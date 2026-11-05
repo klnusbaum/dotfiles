@@ -207,6 +207,13 @@ end)
 vim.keymap.set('n', '<leader>td', function()
     mini_sessions.select('delete', {})
 end)
+vim.keymap.set('n', '<leader>tG', function()
+  vim.ui.input({ prompt = 'Grep in dir: ', completion = 'dir' }, function(dir)
+      if dir == nil or dir == '' then return end
+      tele.live_grep({ search_dirs = { dir }, prompt_title = 'Grep in ' .. dir })
+  end)
+end, { desc = 'live grep scoped to a directory' })
+
 
 -- Random specific keymaps
 vim.keymap.set('n', '<leader>ma', vim.cmd.make, { desc = 'run make' })
