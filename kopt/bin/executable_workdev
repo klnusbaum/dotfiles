@@ -1,27 +1,16 @@
-readonly SSH_CONTROL_SOCKET="/tmp/workserver-forwards-control-socket"
+#!/usr/bin/env bash
+# Attach to the work tmux session on the devbox. Port forwards named in
+# REMOTE_WORK_SERVER_PORT_FORWARDS (ssh -L syntax; several, space-separated)
+# ride this connection and end with it, so detaching leaves nothing behind.
 
-run_tunnel() {
-    readonly TUNNEL_STATUS=$(ssh -S $SSH_CONTROL_SOCKET -O check $REMOTE_WORK_SERVER  2>&1 )
-    if [[ ! "$TUNNEL_STATUS" =~ "Master running" ]]; then
-        ssh -4 -M -S $SSH_CONTROL_SOCKET -fN \
-            -L "$REMOTE_WORK_SERVER_PORT_FORWARDS" \
-            $REMOTE_WORK_SERVER
-    fi
-    trap cleanup_tunnel EXIT
-}
-
-cleanup_tunnel() {
-    ssh -S $SSH_CONTROL_SOCKET -O exit $REMOTE_WORK_SERVER 2&>/dev/null
-}
-
-
-if [[ "$REMOTE_WORK_SERVER" == "" ]]; then
-  echo "REMOTE_WORK_SERVER environment variable not set"
-  exit 0
+if [[ -z "$REMOTE_WORK_SERVER" ]]; then
+    echo "REMOTE_WORK_SERVER environment variable not set" >&2
+    exit 1
 fi
 
-if [[ "$REMOTE_WORK_SERVER_PORT_FORWARDS" != "" ]]; then
-    run_tunnel
-fi
+forwards=()
+for forward in $REMOTE_WORK_SERVER_PORT_FORWARDS; do
+    forwards+=(-L "$forward")
+done
 
-ssh "$REMOTE_WORK_SERVER" -t tmux new-session -A -s work
+ssh "${forwards[@]}" "$REMOTE_WORK_SERVER" -t tmux new-session -A -s work
