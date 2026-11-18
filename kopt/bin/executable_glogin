@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-gcloud auth login --update-adc
+gcloud auth login --update-adc --force
